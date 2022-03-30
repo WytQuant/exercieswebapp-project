@@ -19,7 +19,7 @@ function Navbar() {
             </div>
             <ul className={navbarMoblie ? 'hr__nav-item active' : 'hr__nav-item'}>
                 <Link to="/" className="hr__nav-link">Home</Link>
-                <Link to="/" className="hr__nav-link">Statistics</Link>
+                <Link to="/" className="hr__nav-link">Report</Link>
                 <Link to="/" className="hr__nav-link">Profile</Link>
             </ul>
             <div className="hr__nav-moblie" onClick={toggleNavbarMoblie}>

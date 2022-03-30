@@ -1,6 +1,7 @@
 .hr__homepage {
   padding: 3rem 4rem;
   color: white;
+  height: 880px;
   /* color: #00e600; */
   display: flex;
 }
@@ -16,14 +17,16 @@
 
 .hr__todoAct {
   flex: 1 1 70%;
-  padding: 1rem;
+  padding: 1.5rem;
   border: 1px solid white;
   /* border-radius: 0.5rem; */
 }
 
 .hr__title {
   text-align: center;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
+  /* border-bottom: 2px solid white; */
 }
 
 .hr__card-list {
@@ -32,22 +35,18 @@
   grid-gap: 1rem;
 }
 
-.hr__addButton {
-  display: block;
-  margin: 1rem 0 1rem auto;
-  padding: 1rem;
-  outline: none;
-  border: 1px solid white;
-  color: white;
-  font-size: 1.5rem;
-  font-family: inherit;
-  font-weight: 700;
-  background-color: black;
-  cursor: pointer;
-  box-shadow: 4px 4px grey;
-  transition: all 0.2s ease-in-out;
+.hr__cart-list_empty {
+  display: flex;
+  justify-content: center;
 }
 
-.hr__addButton:hover {
-  box-shadow: none;
+.hr__cart-list_empty p {
+  font-size: 1.5rem;
+}
+
+.hr__addButton-act {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
 }

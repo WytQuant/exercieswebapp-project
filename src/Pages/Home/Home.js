@@ -4,6 +4,7 @@ import Profile from '../../Components/Profile/Profile';
 import ActivitiyCard from '../../Components/ActivityCard/ActivityCard';
 import { dataContext } from '../../DataContext';
 import AddActivity from '../AddActivity/AddActivity';
+import AddButton from '../../Components/AddButton/AddButton';
 
 function Home() {
 
@@ -15,20 +16,24 @@ function Home() {
         setIsClickAdd(true)
     }
 
+    const hasActivitiesData = activitiesData.length > 0;
+
     return (
         <div className="hr__homepage">
             <div className="hr__homepage-profile">
                 <Profile />
-
             </div>
             <div className="hr__todoAct">
-                <h1 className="hr__title">Today Activities</h1>
-                <div className="hr__card-list">
-                    {activitiesData.map(activity => {
-                        return <ActivitiyCard key={activity.id} activity={activity} />
-                    })}
+                <div className="hr__addButton-act">
+                    <h1 className="hr__title">Today Activities</h1>
+                    <AddButton onClick={addActivity}/>
                 </div>
-                <button className="hr__addButton" onClick={addActivity}>Add activity</button>
+                <div className={ hasActivitiesData ? "hr__card-list" : "hr__cart-list_empty"}>
+                    { hasActivitiesData ? activitiesData.map(activity => {
+                        return <ActivitiyCard key={activity.id} activity={activity} />
+                    }) : 
+                    <p>There are no activities today.</p>}
+                </div>
             </div>
             <AddActivity isClick={isClickAdd} setIsClick={setIsClickAdd}/>
         </div>
