@@ -1,0 +1,79 @@
+.hr__addAct {
+  width: 500px;
+  padding: 2rem 2rem;
+  position: fixed;
+  top: 50%;
+  right: -150%;
+  transform: translate(50%, -50%);
+  background-color: black;
+  border: 1px solid white;
+  transition: all 1.618s ease;
+}
+
+.hr__addAct.action {
+  right: 50%;
+  transition: all 0.618s ease;
+}
+
+label {
+  display: block;
+  text-align: center;
+  margin: 0.5rem;
+}
+
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  border: none;
+  border-left: 1px solid white;
+  border-bottom: 1px solid white;
+  background-color: black;
+  color: white;
+  resize: none;
+}
+
+input[type="text"] {
+  width: 100%;
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid white;
+  background-color: black;
+  color: white;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 60%;
+  display: block;
+  margin: 0 auto;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  border: 1px solid white;
+  color: white;
+  background-color: black;
+  text-align: center;
+}
+
+input[type="date"] {
+  width: 60%;
+  display: block;
+  margin: 0 auto;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 1px solid white;
+  /* color: white; */
+  /* background-color: black; */
+}

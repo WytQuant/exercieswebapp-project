@@ -1,0 +1,26 @@
+.hr__card-act {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid white;
+  /* border-radius: 0.5rem; */
+  position: relative;
+  box-shadow: 5px 5px grey;
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+}
+
+.hr__card-act:hover {
+  box-shadow: none;
+}
+
+.hr__card-content p {
+  margin-bottom: 0.3rem;
+}
+
+.hr__card-act span {
+  font-size: 3rem;
+  margin-right: 1rem;
+}

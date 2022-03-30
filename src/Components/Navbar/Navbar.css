@@ -1,0 +1,101 @@
+/* --------------------- navbar main ------------------------------------- */
+
+.hr__navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  /* color: #00e600; */
+  padding: 2rem 4rem;
+  height: 50px;
+  background-color: rgb(0, 0, 0);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* --------------------- navbar logo ------------------------------------- */
+
+.hr__logo-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.hr__logo-container img {
+  width: 40px;
+  margin-right: 1rem;
+}
+
+.hr__logo-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* --------------------- nav link ------------------------------------- */
+
+.hr__nav-item {
+  display: flex;
+}
+
+.hr__nav-link {
+  padding: 22.5px 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  /* color: #00e600; */
+  transition: all 0.5s ease;
+}
+
+.hr__nav-link:hover {
+  background-color: lightgrey;
+  color: black;
+}
+
+.hr__nav-moblie {
+  font-size: 2rem;
+  display: none;
+}
+
+/* --------------------- responsive ------------------------------------- */
+@media screen and (max-width: 576px) {
+  .hr__navbar {
+    position: relative;
+    padding: 2rem 1rem;
+  }
+
+  .hr__nav-item {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    top: 64px;
+    left: -100%;
+    z-index: 1;
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+
+  .hr__nav-item.active {
+    background-color: black;
+    left: 0;
+    opacity: 1;
+    z-index: 1;
+    transition: all 0.5s ease;
+  }
+
+  .hr__nav-link {
+    padding: 1rem 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .hr__nav-link:hover {
+    background-color: grey;
+  }
+
+  .hr__nav-moblie {
+    display: block;
+  }
+}
