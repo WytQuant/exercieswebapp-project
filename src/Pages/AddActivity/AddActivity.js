@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import './AddActivity.css'
 import DeleteButton from '../../Components/DeleteButton/DeleteButton'
-import AddButton from '../../Components/AddButton/AddButton'
 
 const AddActivity = ({ isClick, setIsClick }) => {
 
@@ -13,7 +12,7 @@ const AddActivity = ({ isClick, setIsClick }) => {
         date: ''
     })
 
-    const [isFormNotOk, setIsFormNotOk] = useState(false)
+    const [isFormValid, setIsFormValid] = useState(false)
 
     const handleClick = () => {
         setIsClick(false)
@@ -30,6 +29,7 @@ const AddActivity = ({ isClick, setIsClick }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsClick(false)
+        // receivedData(formData)
         setFormData({
             activityName: '',
             description: '',
@@ -68,7 +68,7 @@ const AddActivity = ({ isClick, setIsClick }) => {
                 <input id="hr__duration" type="number" placeholder='Exercise time' name="duration" value={formData.duration} onChange={handleChange}/>
 
                 <label>Date :</label>
-                <input id="hr__inputDate" name="date" type="text" value={formData.date} placeholder="YYYY-MM-DD" onChange={handleChange}/>
+                <input id="hr__inputDate" name="date" type="date" value={formData.date} onChange={handleChange}/>
 
                 <button className='hr__submit'>Submit</button>
             </form>

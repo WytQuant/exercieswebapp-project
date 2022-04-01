@@ -92,6 +92,7 @@ input[type="number"] {
   padding: 0.5rem;
   font-size: 1rem;
   font-family: inherit;
+  outline: none;
   border: 1px solid white;
   text-align: center;
 }

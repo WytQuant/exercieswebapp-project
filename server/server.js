@@ -45,7 +45,11 @@ app.get('/activities/:id', (req, res) => {
 //Creating activity
 app.post('/activities/create', (req, res) => {
     const createdActivity = req.body;
-    createdActivity.id = activities[activities.length - 1].id + 1
+    if (activities.length > 0) {
+        createdActivity.id = activities[activities.length - 1].id + 1
+    } else {
+        createdActivity.id = 1;
+    }
     activities.push(createdActivity);
     res.send(activities);
 });
