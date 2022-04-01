@@ -17,6 +17,9 @@ function Home() {
     }
 
     const hasActivitiesData = activitiesData.length > 0;
+    
+    // list of first sixth items
+    const listOFActivities = activitiesData.slice(0, 6);
 
     return (
         <div className="hr__homepage">
@@ -29,7 +32,7 @@ function Home() {
                     <AddButton onClick={addActivity}/>
                 </div>
                 <div className={ hasActivitiesData ? "hr__card-list" : "hr__cart-list_empty"}>
-                    { hasActivitiesData ? activitiesData.map(activity => {
+                    { hasActivitiesData ? listOFActivities.map(activity => {
                         return <ActivitiyCard key={activity.id} activity={activity} />
                     }) : 
                     <p>There are no activities today.</p>}

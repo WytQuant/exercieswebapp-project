@@ -46,7 +46,7 @@ textarea {
 input[type="text"] {
   width: 100%;
   display: block;
-  margin: 1rem auto;
+  margin: 0.2rem auto;
   padding: 0.5rem;
   font-size: 1rem;
   font-family: inherit;

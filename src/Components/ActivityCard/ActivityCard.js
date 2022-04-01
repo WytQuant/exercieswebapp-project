@@ -31,12 +31,11 @@ function ActivitiyCard({activity}) {
         >
             <span><RiRunFill /></span>
             <div className="hr__card-content">
-                <p>Name: {activity.type}</p>
-                <p>Description: I don't know why</p>
+                <p>Name: {activity.name}</p>
+                <p>Description: {activity.description}</p>
                 <p>Activitiy type: {activity.type}</p>
                 <p>Duration: {activity.duration} Min</p>
                 <p>{activity.date}</p>
-                <p>Time: {activity.time}</p>
             </div>
             {hovered && <DeleteButton onClick={handleClick}/>}
         </div>

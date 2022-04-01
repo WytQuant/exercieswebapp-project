@@ -1,44 +1,50 @@
 export const data = [
     {
         id: 1,
-        type: "Running",
+        name: 'Running',
+        description: "This is first item. 1",
+        type: "Run",
         duration: 30,
-        date: '30 Mach 2022',
-        time: '17:30 PM'
+        date: '30 Mach 2022'
     },
     {
         id: 2,
-        type: "Running",
-        duration: 33,
-        date: '30 Mach 2022',
-        time: '17:30 PM'
+        name: 'Running',
+        description: "I don't know why 2",
+        type: "Run",
+        duration: 30,
+        date: '30 Mach 2022'
     },
     {
         id: 3,
-        type: "Running",
-        duration: 40,
-        date: '30 Mach 2022',
-        time: '17:30 PM'
+        name: 'Running',
+        description: "I don't know why 3",
+        type: "Run",
+        duration: 30,
+        date: '30 Mach 2022'
     },
     {
         id: 4,
-        type: "Running",
-        duration: 35,
-        date: '30 Mach 2022',
-        time: '17:30 PM'
+        name: 'Running',
+        description: "I don't know why 4",
+        type: "Run",
+        duration: 30,
+        date: '30 Mach 2022'
     },
     {
         id: 5,
-        type: "Running",
-        duration: 60,
-        date: '30 Mach 2022',
-        time: '17:30 PM'
+        name: 'Running',
+        description: "I don't know why 5",
+        type: "Run",
+        duration: 30,
+        date: '30 Mach 2022'
     },
     {
         id: 6,
-        type: "Running",
-        duration: 45,
-        date: '30 Mach 2022',
-        time: '17:30 PM'
+        name: 'Running',
+        description: "This is last item. 6",
+        type: "Run",
+        duration: 30,
+        date: '30 Mach 2022'
     }
 ]
