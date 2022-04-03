@@ -1,11 +1,11 @@
 .hr__card-act {
+  width: 400px;
+  height: 160px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
   padding: 1rem;
   margin-bottom: 1rem;
   border: 1px solid white;
-  /* border-radius: 0.5rem; */
   position: relative;
   box-shadow: 5px 5px grey;
   transition: all 0.25s ease-in-out;
@@ -16,11 +16,23 @@
   box-shadow: none;
 }
 
-.hr__card-content p {
-  margin-bottom: 0.3rem;
-}
-
 .hr__card-act span {
   font-size: 3rem;
   margin-right: 1rem;
+  text-align: center;
+  flex: 1 1 40%;
+}
+
+.hr__card-content {
+  flex: 1 1 60%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.hr__card-content:hover {
+  overflow: auto;
+}
+
+.hr__card-content p {
+  margin-bottom: 0.3rem;
 }

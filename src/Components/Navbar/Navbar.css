@@ -1,11 +1,13 @@
 /* --------------------- navbar main ------------------------------------- */
 
 .hr__navbar {
+  /* max-width: 1200px;
+  margin: 0 auto; */
   height: 50px;
+  padding: 2rem 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 4rem;
   color: white;
   border-bottom: 1px solid white;
   background-color: rgb(0, 0, 0);
