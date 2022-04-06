@@ -20,7 +20,7 @@ router.use((req, res, next) => {
 })
 
 // defined router user record activities path
-router.use('/me/record', activityRecords);
+router.use('/me/records', activityRecords);
 
 
 // CRUD

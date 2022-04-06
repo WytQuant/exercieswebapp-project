@@ -2,13 +2,13 @@ import React, { useContext, useState } from 'react';
 import './Home.css';
 import Profile from '../../Components/Profile/Profile';
 import ActivitiyCard from '../../Components/ActivityCard/ActivityCard';
-import { dataContext } from '../../DataContext';
+import { Context } from '../../Context';
 import AddActivity from '../AddActivity/AddActivity';
 import AddButton from '../../Components/AddButton/AddButton';
 
 function Home() {
 
-    const {activitiesData} = useContext(dataContext)
+    const {activitiesData} = useContext(Context)
 
     const [isClickAdd, setIsClickAdd] = useState(false)
 

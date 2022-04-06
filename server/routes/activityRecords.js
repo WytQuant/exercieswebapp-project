@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const data = require('../data'); // mock data
 const ActivityRecordModel = require('../models/RecordModel');
 
 router.use('/:recordId', async (req, res, next) => {
     const activityRecord = await ActivityRecordModel.findOne({id: req.params.recordId})
 
-    if(!activityRecord) {
+    if(activityRecord.length === 0) {
         return res.status(404).send('Record not found!!')
     }
     req.activityRecord = activityRecord;
@@ -61,7 +60,7 @@ router.put('/:recordId', async (req, res, next) => {
 router.delete('/:recordId', async (req, res, next) => {
     // console.log(req.activityRecord)
     const deletedRecord = await ActivityRecordModel.deleteOne(req.activityRecord)
-    return res.status(200).send(deletedRecord);
+    return res.status(204).send(deletedRecord);
 })
 
 module.exports = router;

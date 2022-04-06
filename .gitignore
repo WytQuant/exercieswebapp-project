@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 /server/config.js
+/src/fetchData.js
 
 # testing
 /coverage

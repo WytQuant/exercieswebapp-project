@@ -1,11 +1,12 @@
 import React, { useState, useContext } from 'react'
 import './AddActivity.css'
 import DeleteButton from '../../Components/DeleteButton/DeleteButton'
-import { dataContext } from '../../DataContext'
+import { Context } from '../../Context'
+import Axios from 'axios'
 
 const AddActivity = ({ isClick, setIsClick }) => {
 
-    const {addData} = useContext(dataContext);
+    const {addData} = useContext(Context);
 
     const [formData, setFormData] = useState({
         activityName: {
@@ -70,10 +71,10 @@ const AddActivity = ({ isClick, setIsClick }) => {
         return setFormData(prevData => ({...prevData, [inputName]: inputValue}));
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         addData({
-            name: activityName.value,
+            activityName: activityName.value,
             description: description.value,
             type: type,
             duration: duration,

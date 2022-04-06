@@ -7,8 +7,12 @@
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "apexcharts": "^3.34.0",
+    "axios": "^0.26.1",
+    "cors": "^2.8.5",
     "express": "^4.17.3",
+    "joi": "^17.6.0",
     "mongoose": "^6.2.9",
+    "nodemon": "^2.0.15",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
@@ -20,7 +24,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch": "node server/mainRoute.js"
   },
   "eslintConfig": {
     "extends": [
