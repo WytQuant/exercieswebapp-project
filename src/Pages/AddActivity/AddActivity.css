@@ -22,7 +22,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-label {
+.hr__add-label {
   display: block;
   text-align: center;
   margin: 0.3rem;
@@ -43,7 +43,7 @@ textarea {
   resize: none;
 }
 
-input[type="text"] {
+#hr__actName {
   width: 100%;
   display: block;
   margin: 0.2rem auto;

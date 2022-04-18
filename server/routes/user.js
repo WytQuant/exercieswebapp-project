@@ -1,39 +1,62 @@
-const express = require('express');
+const express = require("express");
+const bcrypt = require("bcrypt");
+const passport = require("passport");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
 const router = express.Router();
-const activitiesData = require('../data')
-const activityRecords = require('./activityRecords')
-
-// assuming userId
-const userId = 'OxWytz08py';
-
-// Don't repeat yourself
-router.use((req, res, next) => {
-    const userIndex = activitiesData.findIndex(user => user.userId === userId)
-    const userInfo = activitiesData[userIndex]
-
-    if (!userInfo) {
-        return res.status(404).send("User cannot found!")
-    }
-    
-    req.userInfo = userInfo
-    return next();
-})
+const User = require("../models/User");
+const activityRecords = require("./activityRecords");
 
 // defined router user record activities path
-router.use('/me/records', activityRecords);
+router.use("/me/records", activityRecords);
 
+router.use(
+  session({
+    secret: "secretcode",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
+router.use(cookieParser("secretcode"));
+router.use(passport.initialize());
+router.use(passport.session());
+require("../passport/passportConfig")(passport);
 
 // CRUD
-router.post('/login', (req, res, next) => {
+router.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) throw err;
+    if (!user) res.send("No user exists");
+    else {
+      req.logIn(user, (err) => {
+        if (err) throw err;
+        res.send("Successfully Authenticated");
+      });
+    }
+  })(req, res, next);
 });
 
-router.post('/register', (req, res, next) => {});
+router.post("/signup", (req, res, next) => {
+  User.findOne({ username: req.body.username }, async (err, doc) => {
+    if (err) throw err;
+    if (doc) res.send("User already exists");
+    if (!doc) {
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      const newUser = new User({
+        ...req.body,
+        password: hashedPassword,
+      });
+      await newUser.save();
+      res.send("Created new user!!");
+    }
+  });
+});
 
-router.get('/me', (req, res, next) => {
-    return res.status(200).send(req.userInfo);
-})
+router.get("/me", (req, res) => {
+  res.send(req.user);
+});
 
-router.put('/me', (req, res, next) => {});
-
+router.put("/me", (req, res, next) => {});
 
 module.exports = router;

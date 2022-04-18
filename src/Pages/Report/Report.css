@@ -1,0 +1,21 @@
+.hr__report-section {
+  color: white;
+}
+
+.report-background {
+  background: linear-gradient(
+      90deg,
+      rgba(82, 0, 106, 0.4) 0%,
+      rgba(205, 17, 59, 0.4) 30%,
+      rgba(255, 118, 0, 0.4) 70%,
+      rgba(255, 169, 0, 0.4) 100%
+    ),
+    url("./agence-olloweb-qfp4-Ud6Fyg-unsplash.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.doughnut-chart {
+  width: 600px;
+  padding: 2rem 4rem;
+}

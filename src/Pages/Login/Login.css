@@ -1,0 +1,123 @@
+/* background */
+
+.hr__loginForm-container {
+  width: 100%;
+  height: 100vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* brander login form  */
+.hr__loginForm-logo {
+  height: 100%;
+  padding-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  flex: 1 1 50%;
+  background: whitesmoke;
+}
+
+.hr__loginForm-logo img {
+  width: 120px;
+  margin: 0 0 1rem 0;
+}
+
+.hr__loginForm-logo p {
+  font-size: 1.5rem;
+  color: black;
+}
+
+/* login form for input data*/
+.hr__loginForm-input {
+  flex: 1 1 50%;
+  padding: 0 2rem;
+}
+
+.hr__loginTitle {
+  width: 50%;
+  margin: 0 auto 1rem auto;
+}
+
+.hr__loginForm {
+  display: flex;
+  flex-flow: column;
+}
+
+form::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: white;
+  margin: 1.5rem 0 1rem 0;
+}
+
+/* input for logging in */
+
+.hr__loginForm input,
+.hr__signUpForm input {
+  display: block;
+  width: 50%;
+  margin: 0 auto 1.5rem auto;
+  padding: 0.5rem;
+  font-family: inherit;
+  color: inherit;
+  font-size: 1rem;
+  outline: none;
+  background: black;
+  border: 1px solid white;
+}
+
+.hr__btn-signin {
+  margin: 0 auto;
+  width: 50%;
+  padding: 0.5rem;
+  outline: none;
+  border: 1px solid white;
+  box-shadow: 3px 3px white;
+  transition: all 0.3s ease;
+  color: inherit;
+  font-size: 1rem;
+  background: black;
+  cursor: pointer;
+}
+
+.hr__btn-signin:active {
+  box-shadow: none;
+}
+
+/* sign up and forgot password section  */
+
+.hr__signUp-forgot {
+  display: flex;
+  justify-content: center;
+}
+
+.hr__signUp-forgot p {
+  margin: 0 0.5rem;
+}
+
+.hr__forgotPassword,
+.hr__signUp {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  font-family: inherit;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.hr__forgotPassword:hover,
+.hr__signUp:hover {
+  color: lightgray;
+}
+
+.hr__saperate {
+  margin: 0 0.5rem;
+}

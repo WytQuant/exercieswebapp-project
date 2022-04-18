@@ -1,66 +1,59 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const ActivityRecordModel = require('../models/RecordModel');
-
-router.use('/:recordId', async (req, res, next) => {
-    const activityRecord = await ActivityRecordModel.findOne({id: req.params.recordId})
-
-    if(activityRecord.length === 0) {
-        return res.status(404).send('Record not found!!')
-    }
-    req.activityRecord = activityRecord;
-    return next();
-
-})
-
-router.use('/', async (req, res, next) => {
-    const userRecords = await ActivityRecordModel.find({})
-    req.userRecords = userRecords; 
-    return next()
-})
+const User = require("../models/User");
 
 // get all of activities
-router.get('/', (req, res, next) => {
-    return res.status(200).send(req.userRecords)
-})
+router.post("/", async (req, res) => {
+  const userProfile = await User.findOne({ username: req.body.username });
+  const userRecords = userProfile.activityRecords;
+  return res.status(200).send(userRecords);
+});
 
 // get activity by id
-router.get('/:recordId', (req, res, next) =>{
-    return res.status(200).send(req.activityRecord)
-})
+// router.get("/:recordId", (req, res, next) => {
+//   return res.status(200).send(req.activityRecord);
+// });
 
 // create activity record
-router.post('/', async (req, res, next) => {
-    const body = req.body;
+router.post("/create", async (req, res) => {
+  const body = req.body;
+  const userProfile = await User.findOne({ username: req.body.username });
+  const userRecords = userProfile.activityRecords;
+  if (userRecords.length > 0) {
+    body.id = userRecords[userRecords.length - 1].id + 1;
+  } else {
+    body.id = 1;
+  }
 
-    if (req.userRecords.length > 0) {
-        body.id = req.userRecords[req.userRecords.length - 1].id + 1
-    } else {
-        body.id = 1;
-    }
-
-    const createRecord = new ActivityRecordModel({
-        ...body,
-    })
-    
-    await createRecord.save();
-    return res.status(201).send(createRecord);
-})
+  userProfile.activityRecords.push(body);
+  await userProfile.save();
+  return res.status(201).send("Created successful!!");
+});
 
 //updating record
-router.put('/:recordId', async (req, res, next) => {
-    const body = req.body;
+// router.put("/:recordId", async (req, res, next) => {
+//   const body = req.body;
 
-    // console.log(updateRecord)
-    const updatedRecord = await ActivityRecordModel.updateOne(req.activityRecord, body);
-    return res.status(201).send(updatedRecord);
-})
+//   // console.log(updateRecord)
+//   const updatedRecord = await ActivityRecordModel.updateOne(
+//     req.activityRecord,
+//     body
+//   );
+//   return res.status(201).send(updatedRecord);
+// });
 
 // delete record
-router.delete('/:recordId', async (req, res, next) => {
-    // console.log(req.activityRecord)
-    const deletedRecord = await ActivityRecordModel.deleteOne(req.activityRecord)
-    return res.status(204).send(deletedRecord);
-})
+router.delete("/:username/:recordId", async (req, res, next) => {
+  const { username, recordId } = req.params;
+  const userProfile = await User.findOne({ username: username });
+  const userRecords = userProfile.activityRecords;
+  const recordIndex = userRecords.findIndex((record) => {
+    return record.id === +recordId;
+  });
+
+  userRecords.splice(recordIndex, 1);
+  await userProfile.save();
+  return res.status(204).send(userRecords);
+});
 
 module.exports = router;

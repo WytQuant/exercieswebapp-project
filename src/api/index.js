@@ -1,16 +1,17 @@
-import Axios from 'axios';
+import axios from "axios";
 
-const client = Axios.create({
-    baseURL: 'http://localhost:4001',
-    validateStatus: (status) => {
-        return status >= 200 && status < 300;
-    }
+const client = axios.create({
+  baseURL: "http://localhost:4001",
+  validateStatus: (status) => {
+    return status >= 200 && status < 300;
+  },
 });
 
-const fetchData = async () => {
-   const response = await client.get('/users/me/records');
-   return response;
+const fetchData = async (username) => {
+  const response = await client.post("/users/me/records", {
+    username,
+  });
+  return response;
 };
 
-export {client, fetchData};
-
+export { client, fetchData };

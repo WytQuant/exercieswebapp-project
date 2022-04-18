@@ -1,52 +1,187 @@
-.hr__homepage {
-  padding: 3rem 4rem;
+.hr__home {
   color: white;
-  height: 880px;
-  /* color: #00e600; */
+}
+
+.hr__homeheader {
+  color: white;
+  padding: 5rem 10rem;
+  background: linear-gradient(
+      90deg,
+      rgba(82, 0, 106, 0.4) 0%,
+      rgba(205, 17, 59, 0.4) 30%,
+      rgba(255, 118, 0, 0.4) 70%,
+      rgba(255, 169, 0, 0.4) 100%
+    ),
+    url("./jannis-brandt-8manzosDSGM-unsplash.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.hr__homeheader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hr__homeheader-content p {
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(82, 0, 106, 1) 10%,
+    rgba(205, 17, 59, 1) 50%,
+    rgba(255, 118, 0, 1) 75%,
+    rgba(255, 169, 0, 1) 100%
+  );
+  transition: all, 0.5s ease;
+}
+
+.animation-underline {
+  font-size: 3rem;
+  position: relative;
+}
+
+.animation-underline::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 5px;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(205, 17, 59, 1);
+  visibility: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+.animation-underline:hover::before {
+  visibility: visible;
+  width: 100%;
+}
+
+/* ------------------- up to date section ----------------- */
+.hr__uptodate {
+  padding: 2rem 10rem;
+  font-size: 1.35rem;
+}
+
+.hr__uptodate::after {
+  display: block;
+  margin: 0.5rem 0 0 0;
+  content: "";
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;
+  background: linear-gradient(
+    135deg,
+    rgba(82, 0, 106, 1) 0%,
+    rgba(205, 17, 59, 1) 30%,
+    rgba(255, 118, 0, 1) 70%,
+    rgba(255, 169, 0, 1) 100%
+  );
+}
+
+/* ------------------- card article section ----------------- */
+/* .hr__card-articles-section {
+  padding: 0 10rem;
+} */
+
+/* ------------------- spotlight article section ----------------- */
+.hr__group-articles {
+  padding: 2rem 3rem;
   display: flex;
 }
 
-.hr__homepage-profile {
-  flex: 1 1 30%;
-  margin-right: 1rem;
+/* ------------------- list article title ----------------- */
+.hr__card-spotlight-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex: 1 1 20%;
+  position: relative;
   padding: 1rem;
-  border: 1px solid white;
-  /* border-radius: 0.5rem; */
-  text-align: center;
+  background: black;
+}
+.spot__title {
+  margin-bottom: 4rem;
 }
 
-.hr__todoAct {
-  flex: 1 1 70%;
-  padding: 1.5rem;
-  border: 1px solid white;
-  /* border-radius: 0.5rem; */
+.hr__card-spotlight-title p {
+  margin: 0 0 0.5rem 0;
 }
 
-.hr__title {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  /* border-bottom: 2px solid white; */
+.verywell-link {
+  text-decoration: none;
+  font-size: 1rem;
+  color: white;
+  padding-bottom: 0.5rem;
 }
 
-.hr__card-list {
+.hr__card-spotlight-title::before {
+  content: "";
+  padding: 6px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(82, 0, 106, 1) 0%,
+    rgba(205, 17, 59, 1) 30%,
+    rgba(255, 118, 0, 1) 70%,
+    rgba(255, 169, 0, 1) 100%
+  );
+  z-index: -1;
+}
+
+/* ------------------- list article ----------------- */
+.hr__card-listarticles {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1rem 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  margin: 0 0 0 2rem;
+  flex: 1 1 80%;
 }
 
-.hr__cart-list_empty {
+.card__container {
+  width: 300px;
+  background: rgb(49, 49, 49);
+  transition: all 0.328s ease-in-out;
+  cursor: pointer;
+}
+
+.other-articles {
+  width: 280px;
+}
+
+.card__container:hover {
+  box-shadow: 8px 8px white;
+}
+
+.card__img {
+  width: 100%;
+}
+
+.card__content {
+  height: 200px;
   display: flex;
-  justify-content: center;
-}
-
-.hr__cart-list_empty p {
-  font-size: 1.5rem;
-}
-
-.hr__addButton-act {
-  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
+  margin: -4px 0 0 0;
+  padding: 1rem;
+}
+
+.article-link {
+  align-self: flex-end;
+}
+
+/* ------------------- list article ----------------- */
+.hr__card-list-other-articles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 2.5rem;
 }
