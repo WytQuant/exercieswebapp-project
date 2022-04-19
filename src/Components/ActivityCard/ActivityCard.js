@@ -1,19 +1,27 @@
 import React, { useState, useContext } from "react";
 import "./ActivityCard.css";
 import { RiRunFill } from "react-icons/ri";
+import { BiSwim } from "react-icons/bi";
+import { IoBicycle } from "react-icons/io5";
+import { FaHiking } from "react-icons/fa";
 import { Context } from "../../Context/Context";
 import DeleteButton from "../DeleteButton/DeleteButton";
 
 function ActivitiyCard({ activity }) {
   const { removeData } = useContext(Context);
-
-  // const [updateInfo, setUpdateInfo] = useState(false);
   const [hovered, setHovered] = useState(false);
 
-  //update infomation section
-  // const handleClicktoUpdate = () => {
-  //   setUpdateInfo(true);
-  // };
+  let activityIcon;
+
+  if (activity.type === "Run") {
+    activityIcon = <RiRunFill />;
+  } else if (activity.type === "Swim") {
+    activityIcon = <BiSwim />;
+  } else if (activity.type === "Bicycle ride") {
+    activityIcon = <IoBicycle />;
+  } else if (activity.type === "Walk and hike") {
+    activityIcon = <FaHiking />;
+  }
 
   // show and hide delete button
   const handleOver = () => {
@@ -46,9 +54,7 @@ function ActivitiyCard({ activity }) {
       onMouseOver={handleOver}
       onMouseLeave={handleLeave}
     >
-      <span>
-        <RiRunFill />
-      </span>
+      <span>{activityIcon}</span>
       <div className='hr__card-content'>
         <p>Name: {activity.activityName}</p>
         <p>Description: {activity.description}</p>

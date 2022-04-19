@@ -1,0 +1,12 @@
+.content-loading {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.loading-text {
+  margin-top: 2rem;
+}

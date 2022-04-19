@@ -20,11 +20,11 @@
   font-size: 3rem;
   margin-right: 1rem;
   text-align: center;
-  flex: 1 1 25%;
+  flex: 1 1 40%;
 }
 
 .hr__card-content {
-  flex: 1 1 75%;
+  flex: 1 1 60%;
   height: 100%;
   overflow: hidden;
 }
@@ -36,4 +36,3 @@
 .hr__card-content p {
   margin-bottom: 0.3rem;
 }
-

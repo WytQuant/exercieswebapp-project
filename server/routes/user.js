@@ -27,7 +27,7 @@ require("../passport/passportConfig")(passport);
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) throw err;
-    if (!user) res.send("No user exists");
+    if (!user) res.send("Your email or password is wrong!");
     else {
       req.logIn(user, (err) => {
         if (err) throw err;

@@ -155,7 +155,7 @@ const AddActivity = ({ isClick, setIsClick }) => {
         <input
           id='hr__duration'
           type='number'
-          placeholder='Exercise time'
+          placeholder='Exercise time in minute'
           name='duration'
           value={duration}
           onChange={handleChange}

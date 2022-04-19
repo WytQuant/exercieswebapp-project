@@ -1,65 +1,96 @@
 import React, { useState } from "react";
+import "./Signup.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./Signup.css";
 
 const Signup = () => {
-  const [signUpData, setSignUpData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
-
   const navigate = useNavigate();
+
+  const initialValues = { username: "", email: "", password: "" };
+  const [signUpData, setSignUpData] = useState(initialValues);
+  const [formErrors, setFormErrors] = useState({});
+  const [canSubmit, setCanSubmit] = useState(false);
 
   // get data from inputed from
   const getData = ({ target }) => {
-    const name = target.name;
-    const inputValue = target.value;
-
-    setSignUpData((prevValue) => ({
-      ...prevValue,
-      [name]: inputValue,
-    }));
+    const { name, value } = target;
+    setSignUpData({ ...signUpData, [name]: value.trim() });
+    setFormErrors(validate(signUpData));
+    const notFillout = Object.values(formErrors).some(
+      (error) => error.split(" ")[2] === "required!"
+    );
+    if (!notFillout) {
+      setCanSubmit(true);
+    } else {
+      setCanSubmit(false);
+    }
   };
 
   // submit form and send our data to backend then storing into database
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const response = await axios({
+        method: "POST",
+        data: {
+          ...signUpData,
+        },
+        withCredentials: true,
+        url: "http://localhost:4001/users/signup",
+      });
+      console.log(response);
+      console.log(response.data);
+      alert("Sign up successfully!!");
 
-    await axios({
-      method: "POST",
-      data: {
-        ...signUpData,
-      },
-      withCredentials: true,
-      url: "http://localhost:4001/users/signup",
-    })
-      .then((res) => {
-        console.log(res);
-        console.log(res.data);
-        alert("You have already created account!!");
-      })
-      .catch((err) => console.log(err));
+      setSignUpData({
+        username: "",
+        email: "",
+        password: "",
+      });
 
-    setSignUpData({
-      username: "",
-      email: "",
-      password: "",
-    });
+      navigate("/login");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-    navigate("/login");
+  const validate = (values) => {
+    const errors = {};
+    const regexEmail =
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; /* eslint-disable-line */
+    const regexPassword =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/; /* eslint-disable-line */
+    if (!values.username) {
+      errors.username = "Username is required!";
+    } else if (values.username.length < 4 && values.username.length > 0) {
+      errors.username = "Username must more than 4 character.";
+    }
+
+    if (!values.email) {
+      errors.email = "Email is required!";
+    } else if (!regexEmail.test(values.email)) {
+      errors.email = "Email format: example@example.com";
+    }
+
+    if (!values.password) {
+      errors.password = "Password is required!";
+    } else if (!regexPassword.test(values.password)) {
+      errors.password =
+        "Minimum eight characters, at least one uppercase letter, one lowercase letter and one number";
+    }
+
+    return errors;
   };
 
   return (
-    <div className='hr__loginForm-container'>
-      <div className='hr__loginForm-logo'>
+    <div className='hr__signupForm-container'>
+      <div className='hr__signupForm-logo'>
         <img src='./img/logo.png' alt='logo' />
         <p>HEART RATE - Making your tracking exercise easier.</p>
       </div>
-      <div className='hr__loginForm-input'>
-        <h2 className='hr__loginTitle'>Create account :</h2>
-        <form className='hr__loginForm' onSubmit={handleSubmit}>
+      <div className='hr__signupForm-input'>
+        <h2 className='hr__signupTitle'>Create account :</h2>
+        <form className='hr__signupForm' onSubmit={handleSubmit}>
           <input
             id='hr__username'
             type='text'
@@ -68,6 +99,7 @@ const Signup = () => {
             value={signUpData.username}
             onChange={getData}
           />
+          <p className='validate-error'>{formErrors.username}</p>
           <input
             id='hr__email'
             type='email'
@@ -76,6 +108,7 @@ const Signup = () => {
             value={signUpData.email}
             onChange={getData}
           />
+          <p className='validate-error'>{formErrors.email}</p>
           <input
             id='hr__password'
             type='password'
@@ -84,13 +117,18 @@ const Signup = () => {
             value={signUpData.password}
             onChange={getData}
           />
-          <button type='submit' className='hr__btn-signin'>
+          <p className='validate-error'>{formErrors.password}</p>
+          <button
+            disabled={!canSubmit}
+            type='submit'
+            className={canSubmit ? "hr__btn-signup" : "cannot-signup"}
+          >
             Sign up
           </button>
         </form>
-        <div className='hr__signUp-forgot'>
+        <div className='hr__signup-have-account'>
           <p>Already Have an account</p>
-          <Link className='hr__forgotPassword' to='/login'>
+          <Link className='hr__forgotpassword' to='/login'>
             Login?
           </Link>
         </div>

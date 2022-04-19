@@ -4,6 +4,7 @@ const User = require("../models/User");
 
 // get all of activities
 router.post("/", async (req, res) => {
+  console.log(req.body);
   const userProfile = await User.findOne({ username: req.body.username });
   const userRecords = userProfile.activityRecords;
   return res.status(200).send(userRecords);

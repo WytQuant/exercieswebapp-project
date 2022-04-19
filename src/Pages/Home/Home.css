@@ -72,7 +72,6 @@
   content: "";
   width: 100%;
   height: 5px;
-  border-radius: 5px;
   background: linear-gradient(
     135deg,
     rgba(82, 0, 106, 1) 0%,

@@ -27,7 +27,11 @@ function Navbar() {
         <Link to='/report' className='hr__nav-link'>
           Report
         </Link>
-        <Link to='/login' className='hr__nav-link'>
+        <Link
+          to='/login'
+          className='hr__nav-link'
+          onClick={() => sessionStorage.clear()}
+        >
           Log out
         </Link>
       </ul>

@@ -9,13 +9,12 @@
   align-items: center;
 }
 
-/* brander login form  */
+/*logo login form  */
 .hr__loginForm-logo {
   height: 100%;
-  padding-top: 10rem;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
   flex: 1 1 50%;
   background: whitesmoke;
@@ -89,20 +88,30 @@ form::after {
   box-shadow: none;
 }
 
+.cannot-signin {
+  margin: 0 auto;
+  width: 50%;
+  padding: 0.5rem;
+  outline: none;
+  border: none;
+  color: black;
+  font-size: 1rem;
+  font-weight: 700;
+  background: black;
+  cursor: pointer;
+  box-shadow: none;
+  background: grey;
+  transition: all 0.3s ease;
+}
+
 /* sign up and forgot password section  */
 
-.hr__signUp-forgot {
+.hr__signup {
   display: flex;
   justify-content: center;
 }
 
-.hr__signUp-forgot p {
-  margin: 0 0.5rem;
-}
-
-.hr__forgotPassword,
-.hr__signUp {
-  display: block;
+.hr__signup-btn {
   text-align: center;
   text-decoration: none;
   color: white;
@@ -113,11 +122,7 @@ form::after {
   cursor: pointer;
 }
 
-.hr__forgotPassword:hover,
-.hr__signUp:hover {
+.hr__signup-btn:hover {
   color: lightgray;
-}
-
-.hr__saperate {
-  margin: 0 0.5rem;
+  text-decoration: underline;
 }
