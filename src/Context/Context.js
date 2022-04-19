@@ -60,8 +60,11 @@ function ContextProvider({ children }) {
   };
 
   // Updating data
-  const updatedData = async (username, id) => {
-    await client.put(`users/me/records/${username}/${id}`);
+  const updatedData = async (newData) => {
+    await client.put(`users/me/records/update`, {
+      ...newData,
+      username: sessionStorage.getItem("username"),
+    });
     getActivitiesData();
   };
 

@@ -98,7 +98,8 @@ const AddActivity = ({ isClick, setIsClick }) => {
 
   return (
     <div className={isClick ? "hr__addAct action" : "hr__addAct"}>
-      <form onSubmit={handleSubmit}>
+      <h2 className='add-title'>Add Activity</h2>
+      <form className='add-act-form' onSubmit={handleSubmit}>
         <label className='hr__add-label' htmlFor='hr__actName'>
           Activity Name :
         </label>
@@ -122,7 +123,7 @@ const AddActivity = ({ isClick, setIsClick }) => {
         <textarea
           id='hr__descrip'
           rows='3'
-          placeholder='What are you looking for ?'
+          placeholder='Enter your desciption here'
           name='description'
           value={description.value}
           onChange={handleChange}

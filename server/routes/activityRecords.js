@@ -4,7 +4,6 @@ const User = require("../models/User");
 
 // get all of activities
 router.post("/", async (req, res) => {
-  console.log(req.body);
   const userProfile = await User.findOne({ username: req.body.username });
   const userRecords = userProfile.activityRecords;
   return res.status(200).send(userRecords);
@@ -18,7 +17,7 @@ router.post("/", async (req, res) => {
 // create activity record
 router.post("/create", async (req, res) => {
   const body = req.body;
-  const userProfile = await User.findOne({ username: req.body.username });
+  const userProfile = await User.findOne({ username: body.username });
   const userRecords = userProfile.activityRecords;
   if (userRecords.length > 0) {
     body.id = userRecords[userRecords.length - 1].id + 1;
@@ -32,16 +31,16 @@ router.post("/create", async (req, res) => {
 });
 
 //updating record
-// router.put("/:recordId", async (req, res, next) => {
-//   const body = req.body;
+router.put("/update", async (req, res, next) => {
+  const { username, recordId } = req.params;
+  const userProfile = await User.findOne({ username: username });
+  const userRecords = userProfile.activityRecords;
+  const recordIndex = userRecords.findIndex((record) => {
+    return record.id === +recordId;
+  });
 
-//   // console.log(updateRecord)
-//   const updatedRecord = await ActivityRecordModel.updateOne(
-//     req.activityRecord,
-//     body
-//   );
-//   return res.status(201).send(updatedRecord);
-// });
+  return res.status(201).send(updatedRecord);
+});
 
 // delete record
 router.delete("/:username/:recordId", async (req, res, next) => {

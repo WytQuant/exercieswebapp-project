@@ -4,7 +4,7 @@ import UserProfile from "../../Components/UserProfile/UserProfile";
 import Navbar from "../../Components/Navbar/Navbar";
 import ActivitiyCard from "../../Components/ActivityCard/ActivityCard";
 import { Context } from "../../Context/Context";
-import AddActivity from "../AddActivity/AddActivity";
+import AddActivity from "../../Components/AddActivity/AddActivity";
 import AddButton from "../../Components/AddButton/AddButton";
 import Loading from "../../Components/Loading/Loading";
 import AOS from "aos";

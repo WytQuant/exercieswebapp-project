@@ -6,10 +6,12 @@ import { IoBicycle } from "react-icons/io5";
 import { FaHiking } from "react-icons/fa";
 import { Context } from "../../Context/Context";
 import DeleteButton from "../DeleteButton/DeleteButton";
+import UpdateActivity from "../UpdateActivity/UpdateActivity";
 
 function ActivitiyCard({ activity }) {
   const { removeData } = useContext(Context);
   const [hovered, setHovered] = useState(false);
+  const [isClickUpdate, setIsClickUpdate] = useState(false);
 
   let activityIcon;
 
@@ -22,6 +24,11 @@ function ActivitiyCard({ activity }) {
   } else if (activity.type === "Walk and hike") {
     activityIcon = <FaHiking />;
   }
+
+  //show and hide update activity
+  const handleClicktoUpdate = () => {
+    setIsClickUpdate(true);
+  };
 
   // show and hide delete button
   const handleOver = () => {
@@ -49,21 +56,30 @@ function ActivitiyCard({ activity }) {
   };
 
   return (
-    <div
-      className='hr__card-act'
-      onMouseOver={handleOver}
-      onMouseLeave={handleLeave}
-    >
-      <span>{activityIcon}</span>
-      <div className='hr__card-content'>
-        <p>Name: {activity.activityName}</p>
-        <p>Description: {activity.description}</p>
-        <p>Activitiy type: {activity.type}</p>
-        <p>Duration: {activity.duration} Min</p>
-        <p>Date: {onlyDate(activity.date)}</p>
+    <>
+      <div
+        className='hr__card-act'
+        onMouseOver={handleOver}
+        onMouseLeave={handleLeave}
+      >
+        <span className='type-icon' onClick={handleClicktoUpdate}>
+          {activityIcon}
+        </span>
+        <div className='hr__card-content'>
+          <p>Name: {activity.activityName}</p>
+          <p>Description: {activity.description}</p>
+          <p>Activitiy type: {activity.type}</p>
+          <p>Duration: {activity.duration} Min</p>
+          <p>Date: {onlyDate(activity.date)}</p>
+        </div>
+        {hovered && <DeleteButton onClick={handleClicktoDelete} />}
       </div>
-      {hovered && <DeleteButton onClick={handleClicktoDelete} />}
-    </div>
+      <UpdateActivity
+        isClick={isClickUpdate}
+        setIsClick={setIsClickUpdate}
+        activity={activity}
+      />
+    </>
   );
 }
 
