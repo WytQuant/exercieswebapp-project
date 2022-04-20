@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Home.css";
+import "./News.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import axios from "axios";
 import Footer from "../../Components/Footer/Footer";
@@ -7,7 +7,7 @@ import Loading from "../../Components/Loading/Loading";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const Home = () => {
+const News = () => {
   const [spotArticles, setSpotArticles] = useState([]);
   const [articles, setArticles] = useState([]);
 
@@ -52,7 +52,7 @@ const Home = () => {
               alt={article.imgAlt}
             />
           </div>
-          <div className='card__content'>
+          <div className='card__content badge-spot-articles'>
             <h2>{article.title}</h2>
             <a
               className='animation-underline verywell-link article-link'
@@ -83,7 +83,7 @@ const Home = () => {
               alt={article.imgAlt}
             />
           </div>
-          <div className='card__content'>
+          <div className='card__content badge-articles'>
             <h2>{article.title}</h2>
             <a
               className='animation-underline verywell-link article-link'
@@ -105,10 +105,10 @@ const Home = () => {
       ) : (
         <div className='hr__home'>
           <Navbar />
-          <div className='hr__homeheader'>
+          <div id='header-top' className='hr__homeheader'>
             <div className='hr__homeheader-content' data-aos='fade-right'>
               <p>NEWS</p>
-              <h1 className='animation-underline'>
+              <h1 className='header-title-news animation-underline'>
                 Fitness and Nutrition News
               </h1>
             </div>
@@ -138,7 +138,7 @@ const Home = () => {
               </div>
               <div className='hr__card-listarticles'>{spotArticleCards}</div>
             </div>
-            <div className='hr__group-articles'>
+            <div className='hr__group-other-articles'>
               <div className='hr__card-list-other-articles'>
                 {otherArticleCards}
               </div>
@@ -151,4 +151,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default News;

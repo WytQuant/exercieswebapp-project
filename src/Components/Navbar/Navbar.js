@@ -15,21 +15,18 @@ function Navbar() {
     <nav className='hr__navbar'>
       <div className='hr__logo-container'>
         <img src='./img/logo.png' alt='logo'></img>
-        <h1 className='hr__logo-name'>HeartRate</h1>
+        <h1 className='hr__logo-name animation-underline'>HeartRate</h1>
       </div>
       <ul className={navbarMoblie ? "hr__nav-item active" : "hr__nav-item"}>
-        <Link to='/home' className='hr__nav-link'>
-          Home
+        <Link to='/profile' className='hr__nav-link animation-underline'>
+          Activities
         </Link>
-        <Link to='/profile' className='hr__nav-link'>
-          Profile
-        </Link>
-        <Link to='/report' className='hr__nav-link'>
-          Report
+        <Link to='/news' className='hr__nav-link animation-underline'>
+          News
         </Link>
         <Link
           to='/login'
-          className='hr__nav-link'
+          className='hr__nav-link animation-underline'
           onClick={() => sessionStorage.clear()}
         >
           Log out

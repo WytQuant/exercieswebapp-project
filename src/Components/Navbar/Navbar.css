@@ -1,15 +1,14 @@
 /* --------------------- navbar main ------------------------------------- */
 
 .hr__navbar {
-  /* max-width: 1200px;
-  margin: 0 auto; */
+  max-width: 1450px;
+  margin: 0 auto;
   height: 50px;
   padding: 2rem 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: white;
-  border-bottom: 1px solid white;
   background-color: rgb(0, 0, 0);
   position: sticky;
   top: 0;
@@ -26,12 +25,16 @@
 
 .hr__logo-container img {
   width: 40px;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
 }
 
 .hr__logo-name {
   font-size: 1.5rem;
   font-weight: 700;
+}
+
+.hr__logo-name:hover {
+  color: rgba(205, 17, 59, 1);
 }
 
 /* --------------------- nav link ------------------------------------- */
@@ -41,17 +44,17 @@
 }
 
 .hr__nav-link {
-  padding: 22.5px 1rem;
+  font-size: 1rem;
+  margin: 1rem;
+  padding-bottom: 2px;
   cursor: pointer;
   text-decoration: none;
   color: white;
-  /* color: #00e600; */
-  transition: all 0.5s ease;
+  transition: all 0.2s ease;
 }
 
 .hr__nav-link:hover {
-  background-color: lightgrey;
-  color: black;
+  color: rgba(205, 17, 59, 1);
 }
 
 .hr__nav-moblie {
@@ -60,7 +63,7 @@
 }
 
 /* --------------------- responsive ------------------------------------- */
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 480px) {
   .hr__navbar {
     position: relative;
     padding: 2rem 1rem;
@@ -91,10 +94,6 @@
     padding: 1rem 0;
     width: 100%;
     text-align: center;
-  }
-
-  .hr__nav-link:hover {
-    background-color: grey;
   }
 
   .hr__nav-moblie {

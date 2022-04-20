@@ -1,18 +1,27 @@
 .hr__addAct {
-  width: 500px;
-  padding: 0.5rem 2rem;
   position: fixed;
   top: 55%;
   right: -150%;
   transform: translate(50%, -50%);
-  background-color: black;
-  border: 1px solid white;
   transition: all 1.618s ease;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hr__addAct.action {
   right: 50%;
   transition: all 0.618s ease;
+}
+
+.hr__add-input {
+  position: relative;
+  width: 500px;
+  padding: 0.5rem 2rem;
+  background-color: black;
+  border: 1px solid white;
 }
 
 .add-title {
@@ -31,6 +40,16 @@
 }
 
 /* ------- input section ------ */
+.validate-error-add-update {
+  font-size: 0.95rem;
+  color: red;
+}
+
+.error-type-du-date {
+  width: 60%;
+  margin: 0 auto;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -126,6 +145,20 @@ input[type="number"] {
   cursor: pointer;
   box-shadow: 4px 4px grey;
   transition: all 0.2s ease-in-out;
+}
+
+.cannot-submit {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5rem 1rem;
+  outline: none;
+  border: none;
+  color: black;
+  font-size: 1.5rem;
+  font-family: inherit;
+  font-weight: 700;
+  background-color: grey;
+  cursor: pointer;
 }
 
 .hr__submit:active {

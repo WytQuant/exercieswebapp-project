@@ -1,4 +1,6 @@
 .activity-background {
+  max-width: 1450px;
+  margin: 0 auto;
   background: linear-gradient(
       90deg,
       rgba(82, 0, 106, 0.4) 0%,
@@ -11,41 +13,37 @@
   background-attachment: fixed;
 }
 
+.header-title-act {
+  font-size: 3rem;
+}
+
 .hr__homepage {
-  padding: 3rem 4rem;
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 2rem 10rem;
   color: white;
-  height: 880px;
-  /* color: #00e600; */
-  display: flex;
 }
 
-.hr__homepage-profile {
-  flex: 1 1 30%;
-  margin-right: 1rem;
-  padding: 1rem;
-  border: 1px solid white;
-  /* border-radius: 0.5rem; */
-  text-align: center;
-}
-
-.hr__todoAct {
-  flex: 1 1 70%;
+.hr__list-activity {
+  height: 100vh;
   padding: 1.5rem;
   border: 1px solid white;
-  /* border-radius: 0.5rem; */
 }
 
 .hr__title {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  /* border-bottom: 2px solid white; */
 }
 
 .hr__card-list {
+  height: 80vh;
+  padding: 1rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1rem 2rem;
+  grid-gap: 2rem;
+  justify-items: center;
+  overflow-y: auto;
 }
 
 .hr__cart-list_empty {
@@ -57,9 +55,66 @@
   font-size: 1.5rem;
 }
 
-.hr__addButton-act {
+.hr__addbutton-act {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .hr__homepage {
+    padding: 1rem 2rem;
+  }
+  .hr__card-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hr__title {
+    font-size: 1.75rem;
+  }
+
+  .header-title-act {
+    font-size: 2rem;
+  }
+  .hr__list-activity {
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hr__homepage {
+    padding: 1rem 2rem;
+  }
+  .hr__card-list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .hr__title {
+    font-size: 1.5rem;
+  }
+
+  .header-title-act {
+    font-size: 2rem;
+  }
+  .hr__list-activity {
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hr__homepage {
+    padding: 1rem 2rem;
+  }
+  .hr__card-list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .hr__title {
+    font-size: 1.25rem;
+  }
+
+  .header-title-act {
+    font-size: 2rem;
+  }
+  .hr__list-activity {
+    height: 100%;
+  }
 }

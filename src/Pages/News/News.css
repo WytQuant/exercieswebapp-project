@@ -1,0 +1,458 @@
+.hr__home {
+  color: white;
+  max-width: 1450px;
+  margin: 0 auto;
+}
+
+.hr__homeheader {
+  color: white;
+  padding: 5rem 10rem;
+  background: linear-gradient(
+      90deg,
+      rgba(82, 0, 106, 0.4) 0%,
+      rgba(205, 17, 59, 0.4) 30%,
+      rgba(255, 118, 0, 0.4) 70%,
+      rgba(255, 169, 0, 0.4) 100%
+    ),
+    url("./jannis-brandt-8manzosDSGM-unsplash.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.hr__homeheader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hr__homeheader-content p {
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(82, 0, 106, 1) 10%,
+    rgba(205, 17, 59, 1) 50%,
+    rgba(255, 118, 0, 1) 75%,
+    rgba(255, 169, 0, 1) 100%
+  );
+  transition: all, 0.5s ease;
+}
+
+.header-title-news {
+  font-size: 3rem;
+}
+
+.animation-underline {
+  position: relative;
+}
+
+.animation-underline::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 5px;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(205, 17, 59, 1);
+  visibility: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+.animation-underline:hover::before {
+  visibility: visible;
+  width: 100%;
+}
+
+/* ------------------- up to date section ----------------- */
+.hr__uptodate {
+  padding: 2rem 10rem;
+  font-size: 1.35rem;
+}
+
+.hr__uptodate::after {
+  display: block;
+  margin: 0.5rem 0 0 0;
+  content: "";
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(
+    135deg,
+    rgba(82, 0, 106, 1) 0%,
+    rgba(205, 17, 59, 1) 30%,
+    rgba(255, 118, 0, 1) 70%,
+    rgba(255, 169, 0, 1) 100%
+  );
+}
+
+/* ------------------- spotlight article section ----------------- */
+.hr__group-articles {
+  padding: 2rem 3rem;
+  display: flex;
+}
+
+/* ------------------- list article title ----------------- */
+.hr__card-spotlight-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex: 1 1 20%;
+  position: relative;
+  padding: 1rem;
+  background: black;
+}
+.spot__title {
+  margin-bottom: 4rem;
+}
+
+.hr__card-spotlight-title p {
+  margin: 0 0 0.5rem 0;
+}
+
+.verywell-link {
+  text-decoration: none;
+  font-size: 1rem;
+  color: white;
+  padding-bottom: 0.5rem;
+}
+
+.hr__card-spotlight-title::before {
+  content: "";
+  padding: 6px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(82, 0, 106, 1) 0%,
+    rgba(205, 17, 59, 1) 30%,
+    rgba(255, 118, 0, 1) 70%,
+    rgba(255, 169, 0, 1) 100%
+  );
+  z-index: -1;
+}
+
+/* ------------------- list article ----------------- */
+.hr__card-listarticles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  justify-items: center;
+  margin: 0 0 0 2rem;
+  flex: 1 1 80%;
+}
+
+.card__container {
+  width: 300px;
+  position: relative;
+  background: rgb(49, 49, 49);
+  transition: all 0.328s ease-in-out;
+  cursor: pointer;
+}
+
+.other-articles {
+  width: 280px;
+}
+
+.card__container:hover {
+  box-shadow: 8px 8px white;
+}
+
+.card__img {
+  width: 100%;
+}
+
+.card__content {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: -4px 0 0 0;
+  padding: 1rem;
+}
+
+.badge-spot-articles::before {
+  position: absolute;
+  top: 210px;
+  content: "Fitness and Nutrition News";
+  padding: 3px;
+  background: rgba(205, 17, 59, 1);
+}
+
+.badge-articles::before {
+  position: absolute;
+  top: 195px;
+  content: "Fitness and Nutrition News";
+  padding: 3px;
+  background: rgba(205, 17, 59, 1);
+}
+
+.article-link {
+  align-self: flex-end;
+}
+
+/* ------------------- list article ----------------- */
+
+.hr__group-other-articles {
+  padding: 2rem 3rem;
+}
+.hr__card-list-other-articles {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 2.5rem;
+  justify-items: center;
+  overflow-y: scroll;
+}
+
+@media screen and (max-width: 1024px) {
+  .hr__homeheader {
+    padding: 2rem;
+  }
+
+  .hr__homeheader-content p {
+    font-size: 1.25rem;
+  }
+  .header-title-news {
+    font-size: 2rem;
+  }
+  .hr__uptodate {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  .card__container:hover {
+    box-shadow: none;
+  }
+
+  .animation-underline:hover::before {
+    visibility: hidden;
+  }
+  /* spot article */
+  .spot__title {
+    margin-bottom: 1rem;
+  }
+  .hr__group-articles {
+    padding: 2rem;
+    flex-direction: column;
+  }
+
+  .hr__card-listarticles {
+    margin-top: 1.5rem;
+    margin-left: 0;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hr__group-articles::after {
+    content: "";
+    width: 100%;
+    height: 5px;
+    margin-top: 1rem;
+    background: linear-gradient(
+      135deg,
+      rgba(82, 0, 106, 1) 0%,
+      rgba(205, 17, 59, 1) 30%,
+      rgba(255, 118, 0, 1) 70%,
+      rgba(255, 169, 0, 1) 100%
+    );
+  }
+
+  /* other article */
+  .hr__card-list-other-articles {
+    height: 100vh;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    overflow-y: scroll;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hr__homeheader {
+    padding: 2rem;
+  }
+
+  .hr__homeheader-content p {
+    font-size: 1.25rem;
+  }
+  .header-title-news {
+    font-size: 2rem;
+  }
+  .hr__uptodate {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  .card__container:hover {
+    box-shadow: none;
+  }
+
+  .animation-underline:hover::before {
+    visibility: hidden;
+  }
+
+  /* spot article */
+  .spot__title {
+    margin-bottom: 1rem;
+  }
+  .hr__group-articles {
+    padding: 2rem;
+    flex-direction: column;
+  }
+
+  .hr__card-listarticles {
+    margin-top: 1.5rem;
+    margin-left: 0;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hr__group-articles::after {
+    content: "";
+    width: 100%;
+    height: 5px;
+    margin-top: 1rem;
+    background: linear-gradient(
+      135deg,
+      rgba(82, 0, 106, 1) 0%,
+      rgba(205, 17, 59, 1) 30%,
+      rgba(255, 118, 0, 1) 70%,
+      rgba(255, 169, 0, 1) 100%
+    );
+  }
+
+  /* other article */
+  .hr__card-list-other-articles {
+    height: 100vh;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    overflow-y: scroll;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* header */
+  .hr__homeheader {
+    padding: 2rem;
+  }
+  .hr__homeheader-content p {
+    font-size: 1.25rem;
+  }
+  .header-title-news {
+    font-size: 2rem;
+  }
+  .hr__uptodate {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  /* spotlight article */
+  .spot__title {
+    margin-bottom: 1rem;
+  }
+  .hr__group-articles {
+    padding: 1rem;
+    flex-direction: column;
+  }
+  .hr__card-listarticles {
+    margin-top: 1.5rem;
+    margin-left: 0;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .hr__card-listarticles::after {
+    content: "";
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(
+      135deg,
+      rgba(82, 0, 106, 1) 0%,
+      rgba(205, 17, 59, 1) 30%,
+      rgba(255, 118, 0, 1) 70%,
+      rgba(255, 169, 0, 1) 100%
+    );
+  }
+
+  .hr__group-articles::after {
+    content: none;
+  }
+
+  /* other articles */
+  .hr__card-spotlight-title p,
+  .verywell-link {
+    align-self: flex-end;
+  }
+
+  .hr__card-list-other-articles {
+    height: 100vh;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1rem;
+    overflow-y: scroll;
+  }
+
+  .hr__group-other-articles {
+    padding: 1rem;
+  }
+
+  /* card */
+  .card__container {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .card__container:hover {
+    box-shadow: none;
+  }
+
+  .card__media {
+    height: 112.5px;
+  }
+
+  .card__img {
+    height: 100%;
+    width: 150px;
+    object-fit: cover;
+  }
+
+  .card__content {
+    padding: 0.5rem 0.3rem;
+    height: 100%;
+  }
+
+  .card__content h2 {
+    font-size: 1rem;
+  }
+
+  .verywell-link {
+    padding-bottom: 0;
+  }
+  .animation-underline:hover::before {
+    visibility: hidden;
+  }
+
+  .badge-spot-articles::before {
+    position: absolute;
+    top: 85px;
+    left: 5px;
+    content: "Fitness and Nutrition News";
+    font-size: 0.8rem;
+    padding: 3px;
+    background: rgba(205, 17, 59, 1);
+    z-index: 1;
+  }
+
+  .badge-articles::before {
+    position: absolute;
+    top: 85px;
+    left: 5px;
+    content: "Fitness and Nutrition News";
+    font-size: 0.8rem;
+    padding: 3px;
+    background: rgba(205, 17, 59, 1);
+    z-index: 1;
+  }
+}

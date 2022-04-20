@@ -1,6 +1,5 @@
 .hr__addButton {
   display: block;
-  /* margin: 1rem 0; */
   padding: 1rem;
   outline: none;
   border: 1px solid white;
@@ -16,4 +15,20 @@
 
 .hr__addButton:active {
   box-shadow: none;
+}
+
+@media screen and (max-width: 480px) {
+  .hr__addButton {
+    font-size: 1.25rem;
+    box-shadow: none;
+    padding: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hr__addButton {
+    font-size: 1.25rem;
+    box-shadow: none;
+    padding: 0.5rem;
+  }
 }

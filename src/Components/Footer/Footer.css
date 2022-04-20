@@ -1,3 +1,89 @@
 .hr__footer-section {
-  padding: 2rem 4rem;
+  max-width: 1450px;
+  margin: 0 auto;
+  margin-top: 2rem;
+  padding: 1rem 4rem;
+  border-top: 1px solid white;
+  color: white;
+}
+
+.hr__footer {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.hr__band {
+  display: flex;
+  align-items: center;
+}
+
+.hr__band img {
+  width: 30px;
+}
+
+.brand-title {
+  margin: 0 0 0 0.25rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.brand-title:hover {
+  color: rgba(205, 17, 59, 1);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-info p {
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.contact-info p:hover {
+  text-decoration: underline;
+  color: rgba(205, 17, 59, 1);
+}
+
+.contact-link a {
+  font-size: 1.5rem;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.contact-link a:hover {
+  color: rgba(205, 17, 59, 1);
+}
+
+.copy-right {
+  border-top: 0.5px dotted white;
+  padding: 0.5rem 0 0 0;
+  text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+  .hr__footer-section {
+    padding: 1rem 2rem;
+  }
+  .hr__footer {
+    flex-direction: column;
+  }
+  .hr__band {
+    margin-bottom: 1rem;
+  }
+  .contact-info {
+    flex-direction: row;
+  }
+
+  .contact-info p,
+  .contact-info a {
+    margin-right: 1rem;
+  }
 }

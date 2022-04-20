@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
@@ -12,24 +12,12 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [formErrors, setFormErrors] = useState([false, false]);
-  const [canSubmit, setCanSubmit] = useState(false);
 
   // get data from inputed from
   const getData = ({ target }) => {
     const { name, value } = target;
-    setLogInData({ ...logInData, [name]: value.trim() });
-    setFormErrors(validate(logInData));
+    setLogInData({ ...logInData, [name]: value });
   };
-
-  useEffect(() => {
-    const fillout = formErrors.some((value) => value === false);
-    if (fillout) {
-      setCanSubmit(false);
-    } else {
-      setCanSubmit(true);
-    }
-  }, [formErrors]);
 
   // submit form and send our data to backend then storing into database
   const handleSubmit = (e) => {
@@ -53,7 +41,7 @@ const Login = () => {
             email: "",
             password: "",
           });
-          navigate("/home");
+          navigate("/profile");
         } else {
           alert(res.data);
           setLogInData({
@@ -67,28 +55,11 @@ const Login = () => {
       });
   };
 
-  const validate = (values) => {
-    const errors = [];
-    if (values.email.length === 0) {
-      errors[0] = false;
-    } else if (values.email.length > 0) {
-      errors[0] = true;
-    }
-
-    if (values.password.length === 0) {
-      errors[1] = false;
-    } else if (values.password.length > 0) {
-      errors[1] = true;
-    }
-
-    return errors;
-  };
-
   return (
     <div className='hr__loginForm-container'>
       <div className='hr__loginForm-logo'>
         <img src='./img/logo.png' alt='logo' />
-        <p>HEART RATE - Making your tracking exercise easier.</p>
+        <h1>HEART RATE</h1>
       </div>
       <div className='hr__loginForm-input'>
         <h2 className='hr__loginTitle'>Login :</h2>
@@ -109,11 +80,7 @@ const Login = () => {
             value={logInData.password}
             onChange={getData}
           />
-          <button
-            disabled={!canSubmit}
-            type='submit'
-            className={canSubmit ? "hr__btn-signin" : "cannot-signin"}
-          >
+          <button type='submit' className={"hr__btn-signin"}>
             Sign In
           </button>
         </form>

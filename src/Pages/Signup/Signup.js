@@ -14,8 +14,8 @@ const Signup = () => {
   // get data from inputed from
   const getData = ({ target }) => {
     const { name, value } = target;
-    setSignUpData({ ...signUpData, [name]: value.trim() });
     setFormErrors(validate(signUpData));
+    setSignUpData({ ...signUpData, [name]: value.trim() });
     const notFillout = Object.values(formErrors).some(
       (error) => error.split(" ")[2] === "required!"
     );
@@ -86,7 +86,7 @@ const Signup = () => {
     <div className='hr__signupForm-container'>
       <div className='hr__signupForm-logo'>
         <img src='./img/logo.png' alt='logo' />
-        <p>HEART RATE - Making your tracking exercise easier.</p>
+        <h1>HEART RATE</h1>
       </div>
       <div className='hr__signupForm-input'>
         <h2 className='hr__signupTitle'>Create account :</h2>

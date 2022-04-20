@@ -17,7 +17,16 @@
   justify-content: center;
   align-items: center;
   flex: 1 1 50%;
-  background: whitesmoke;
+  background: linear-gradient(
+      90deg,
+      rgba(82, 0, 106, 0.4) 0%,
+      rgba(205, 17, 59, 0.4) 30%,
+      rgba(255, 118, 0, 0.4) 70%,
+      rgba(255, 169, 0, 0.4) 100%
+    ),
+    url("./victor-freitas-WvDYdXDzkhs-unsplash.jpg");
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .hr__loginForm-logo img {
@@ -125,4 +134,35 @@ form::after {
 .hr__signup-btn:hover {
   color: lightgray;
   text-decoration: underline;
+}
+
+@media screen and (max-width: 1024px) {
+  #hr__email,
+  #hr__password,
+  .hr__btn-signin,
+  .hr__loginTitle {
+    width: 80%;
+  }
+
+  .hr__btn-signin {
+    box-shadow: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hr__loginForm-logo {
+    display: none;
+  }
+  .hr__loginForm-container {
+    background: linear-gradient(
+        90deg,
+        rgba(82, 0, 106, 0.4) 0%,
+        rgba(205, 17, 59, 0.4) 30%,
+        rgba(255, 118, 0, 0.4) 70%,
+        rgba(255, 169, 0, 0.4) 100%
+      ),
+      url("./victor-freitas-WvDYdXDzkhs-unsplash.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+  }
 }

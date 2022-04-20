@@ -6,6 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Main.css";
 import NavbarMain from "../../Components/NavbarMain/NavbarMain";
+import Footer from "../../Components/Footer/Footer";
 
 const Main = () => {
   const headerAnimation = useRef(null);
@@ -51,7 +52,7 @@ const Main = () => {
       renderer: "svg",
       loop: true,
       autoplay: true,
-      animationData: require("../../animations/90021-graph-stats.json"),
+      animationData: require("../../animations/69292-news.json"),
     });
     animate.setSpeed(0.5);
     return () => {
@@ -62,29 +63,32 @@ const Main = () => {
   return (
     <>
       <NavbarMain />
-      <div className='hr__mainSection'>
-        <div className='hr__headerContent' data-aos='fade-down'>
+      <div id='header-top' className='hr__main-section'>
+        <div className='hr__header-content' data-aos='fade-down'>
           <div className='hr__content'>
-            <h1>HEART RATE</h1>
-            <h3>Making you record your activities easily.</h3>
-            <h3>Why HeartRate ?</h3>
+            <h1>Why HeartRate ?</h1>
             <p>
               HeartRate app helps you record and tracking your activities.
               Moreover, we will also provide other features such as Recommend
-              news and Report to you.
+              news to you as well.
             </p>
-            <Link to='/signup' className='hr__headerSignUp'>
-              Sign up
-            </Link>
+            <div className='header-signin-signup'>
+              <Link to='/login' className='hr__header-btn'>
+                Sign in
+              </Link>
+              <Link to='/signup' className='hr__header-btn'>
+                Sign up
+              </Link>
+            </div>
           </div>
           <div
-            className='hr__animation headerAnimation'
+            className='hr__animation header-animation'
             ref={headerAnimation}
           ></div>
         </div>
-        <div className='hr__secondContent'>
+        <div className='hr__second-content'>
           <div
-            className='hr__animation secondAnimation'
+            className='hr__animation second-animation'
             data-aos='fade-right'
             ref={secondAnimation}
           ></div>
@@ -96,22 +100,23 @@ const Main = () => {
             </p>
           </div>
         </div>
-        <div className='hr__lastContent'>
+        <div className='hr__last-content'>
           <div className='hr__content' data-aos='fade-right'>
-            <h1>Analytic Report</h1>
+            <h1>Fitness and Nutrition News</h1>
             <p>
-              All of your statistic about activities' spending time, what are
-              the most activities you do at that week? Those statistics will be
-              reported at the Analytic Repor section.
+              We provide up to date and reliability the news acticles regarding
+              Fitness and Nutrition for you which was checked by Fitness and
+              Nutrition spcailist.
             </p>
           </div>
           <div
-            className='hr__animation lastAnimation'
+            className='hr__animation last-animation'
             data-aos='fade-left'
             ref={lastAnimation}
           ></div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

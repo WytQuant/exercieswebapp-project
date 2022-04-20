@@ -49,12 +49,6 @@ function ActivitiyCard({ activity }) {
     }
   };
 
-  // Tranformation inputed date to yyyy-mm-dd format
-  const onlyDate = (string) => {
-    const res = string.match(/\d{4}-\d{2}-\d{1,2}/);
-    return res[0];
-  };
-
   return (
     <>
       <div
@@ -62,7 +56,11 @@ function ActivitiyCard({ activity }) {
         onMouseOver={handleOver}
         onMouseLeave={handleLeave}
       >
-        <span className='type-icon' onClick={handleClicktoUpdate}>
+        <span
+          className='type-icon'
+          onClick={handleClicktoUpdate}
+          title='Edit Activity'
+        >
           {activityIcon}
         </span>
         <div className='hr__card-content'>
@@ -70,7 +68,7 @@ function ActivitiyCard({ activity }) {
           <p>Description: {activity.description}</p>
           <p>Activitiy type: {activity.type}</p>
           <p>Duration: {activity.duration} Min</p>
-          <p>Date: {onlyDate(activity.date)}</p>
+          <p>Date: {activity.date}</p>
         </div>
         {hovered && <DeleteButton onClick={handleClicktoDelete} />}
       </div>

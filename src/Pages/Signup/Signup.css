@@ -18,6 +18,17 @@
   align-items: center;
   flex: 1 1 50%;
   background: whitesmoke;
+  background: linear-gradient(
+      90deg,
+      rgba(82, 0, 106, 0.4) 0%,
+      rgba(205, 17, 59, 0.4) 30%,
+      rgba(255, 118, 0, 0.4) 70%,
+      rgba(255, 169, 0, 0.4) 100%
+    ),
+    url("./jan-gunnar-nygard-10FlDY7YBWo-unsplash-big.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .hr__signupForm-logo img {
@@ -137,4 +148,26 @@ form::after {
 .hr__forgotpassword:hover {
   color: lightgray;
   text-decoration: underline;
+}
+
+@media screen and (max-width: 1024px) {
+  #hr__email,
+  #hr__password,
+  #hr__username,
+  .hr__signupTitle,
+  .cannot-signup,
+  .hr__btn-signup,
+  .validate-error {
+    width: 80%;
+  }
+
+  .hr__btn-signup {
+    box-shadow: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hr__signupForm-logo {
+    display: none;
+  }
 }

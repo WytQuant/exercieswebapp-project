@@ -1,16 +1,18 @@
-.hr__mainSection {
+.hr__main-section {
   padding: 5rem 10rem;
   color: white;
+  max-width: 1450px;
+  margin: 0 auto;
 }
 
-.hr__headerContent,
-.hr__secondContent {
+.hr__header-content,
+.hr__second-content {
   margin-bottom: 4rem;
 }
 
-.hr__headerContent,
-.hr__secondContent,
-.hr__lastContent {
+.hr__header-content,
+.hr__second-content,
+.hr__last-content {
   display: flex;
   align-items: center;
 }
@@ -37,11 +39,11 @@
   font-size: 24px;
 }
 
-.hr__headerSignUp {
+.hr__header-btn {
   width: 30%;
   display: block;
   padding: 1rem;
-  margin-top: 2rem;
+  margin: 2rem 1rem;
   text-decoration: none;
   text-align: center;
   font-size: 20px;
@@ -50,23 +52,72 @@
   transition: all 0.3s ease;
 }
 
-.hr__headerSignUp:hover {
+.hr__header-btn:hover {
   box-shadow: 6px 6px white;
   text-decoration: underline;
 }
 
 .hr__animation {
   flex: 1 1 50%;
+  margin: 0 2rem;
 }
 
-.headerAnimation {
+.header-animation {
   height: 20rem;
 }
 
-.secondAnimation {
+.second-animation {
   height: 30rem;
 }
 
-.lastAnimation {
+.last-animation {
   height: 30rem;
+}
+
+.header-signin-signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .header-animation {
+    display: none;
+  }
+
+  .second-animation {
+    display: none;
+  }
+
+  .last-animation {
+    display: none;
+  }
+
+  .hr__header-btn:hover {
+    box-shadow: none;
+    text-decoration: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hr__main-section {
+    padding: 2rem 2rem;
+  }
+  .hr__header-btn:hover {
+    box-shadow: none;
+    text-decoration: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hr__main-section {
+    padding: 2rem 2rem;
+  }
+  .hr__content {
+    text-align: center;
+  }
+  .hr__header-btn:hover {
+    box-shadow: none;
+    text-decoration: none;
+  }
 }

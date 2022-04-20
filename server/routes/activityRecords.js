@@ -32,14 +32,19 @@ router.post("/create", async (req, res) => {
 
 //updating record
 router.put("/update", async (req, res, next) => {
-  const { username, recordId } = req.params;
-  const userProfile = await User.findOne({ username: username });
+  const body = req.body;
+  const userProfile = await User.findOne({ username: body.username });
   const userRecords = userProfile.activityRecords;
   const recordIndex = userRecords.findIndex((record) => {
-    return record.id === +recordId;
+    return record.id === +body.id;
   });
 
-  return res.status(201).send(updatedRecord);
+  userRecords[recordIndex] = {
+    ...userRecords[recordIndex],
+    ...body,
+  };
+  await userProfile.save();
+  return res.status(201).send(userRecords);
 });
 
 // delete record
