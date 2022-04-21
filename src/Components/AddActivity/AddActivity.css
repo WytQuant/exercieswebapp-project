@@ -164,3 +164,19 @@ input[type="number"] {
 .hr__submit:active {
   box-shadow: none;
 }
+
+@media screen and (max-width: 1024px) {
+  .add-act-form {
+    overflow-y: scroll;
+  }
+
+  .add-act-form:hover {
+    overflow-y: hidden;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hr__add-input {
+    width: 350px;
+  }
+}

@@ -39,3 +39,19 @@
 .update-form:hover {
   overflow-y: scroll;
 }
+
+@media screen and (max-width: 1024px) {
+  .update-form {
+    overflow-y: scroll;
+  }
+
+  .update-form:hover {
+    overflow-y: hidden;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hr__update-input {
+    width: 350px;
+  }
+}

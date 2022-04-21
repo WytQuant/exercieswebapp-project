@@ -67,7 +67,7 @@ const Login = () => {
         <h1>HEART RATE</h1>
       </div>
       <div className='hr__loginForm-input'>
-        <h2 className='hr__loginTitle'>Login :</h2>
+        <h2 className='hr__loginTitle'>Sign in :</h2>
         <form className='hr__loginForm' onSubmit={handleSubmit}>
           <input
             id='hr__email'

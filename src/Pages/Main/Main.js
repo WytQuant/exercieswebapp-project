@@ -96,7 +96,7 @@ const Main = () => {
             <h1>Record</h1>
             <p>
               In HeartRate, you can record such as your activities name,
-              desciption, time that you spend for activities, and so on.
+              description, time that you spend for activities, and so on.
             </p>
           </div>
         </div>
