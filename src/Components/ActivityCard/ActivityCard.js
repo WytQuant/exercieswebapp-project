@@ -7,6 +7,7 @@ import { FaHiking } from "react-icons/fa";
 import { Context } from "../../Context/Context";
 import DeleteButton from "../DeleteButton/DeleteButton";
 import UpdateActivity from "../UpdateActivity/UpdateActivity";
+import Swal from "sweetalert2";
 
 function ActivitiyCard({ activity }) {
   const { removeData } = useContext(Context);
@@ -41,12 +42,24 @@ function ActivitiyCard({ activity }) {
 
   // Delete activity
   const handleClicktoDelete = () => {
-    const text = "Do you really want to delete this activity?";
-    if (window.confirm(text) === true) {
-      removeData(activity.username, activity.id);
-    } else {
-      return;
-    }
+    Swal.fire({
+      title: "Do you really want to delete this activity ?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#FF0000",
+      cancelButtonColor: "#B7B7B7",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await Swal.fire(
+          "Deleted!",
+          "Your activity has been deleted.",
+          "success"
+        );
+        removeData(activity.username, activity.id);
+      }
+    });
   };
 
   return (

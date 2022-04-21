@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
 import { Context } from "../../Context/Context";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { getUser } = useContext(Context);
@@ -30,12 +31,12 @@ const Login = () => {
       withCredentials: true,
       url: "http://localhost:4001/users/login",
     })
-      .then((res) => {
+      .then(async (res) => {
         console.log(res);
 
         if (res.data === "Successfully Authenticated") {
           getUser();
-          alert("Sign in successfully!");
+          await Swal.fire("Sign in successful!", "Welcome back!", "success");
 
           setLogInData({
             email: "",
@@ -43,7 +44,11 @@ const Login = () => {
           });
           navigate("/profile");
         } else {
-          alert(res.data);
+          await Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: res.data,
+          });
           setLogInData({
             email: "",
             password: "",

@@ -2,6 +2,7 @@ import "./UpdateActivity.css";
 import { useState, useContext, useEffect } from "react";
 import DeleteButton from "../DeleteButton/DeleteButton";
 import { Context } from "../../Context/Context";
+import Swal from "sweetalert2";
 
 const UpdateActivity = ({ isClick, setIsClick, activity }) => {
   const { updatedData } = useContext(Context);
@@ -42,6 +43,13 @@ const UpdateActivity = ({ isClick, setIsClick, activity }) => {
       id: activity.id,
       username: activity.username,
       ...updateActivity,
+    });
+    Swal.fire({
+      position: "center-center",
+      icon: "success",
+      title: "Your activity has been updated",
+      showConfirmButton: false,
+      timer: 1000,
     });
   };
 

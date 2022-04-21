@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import "./AddActivity.css";
 import DeleteButton from "../../Components/DeleteButton/DeleteButton";
 import { Context } from "../../Context/Context";
+import Swal from "sweetalert2";
 
 const AddActivity = ({ isClick, setIsClick }) => {
   const { addData } = useContext(Context);
@@ -58,6 +59,13 @@ const AddActivity = ({ isClick, setIsClick }) => {
       date: "",
     });
     setCanSubmit(false);
+    Swal.fire({
+      position: "center-center",
+      icon: "success",
+      title: "Your activity has been created",
+      showConfirmButton: false,
+      timer: 1000,
+    });
   };
 
   const validate = (values) => {

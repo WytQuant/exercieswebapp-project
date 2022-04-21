@@ -104,9 +104,9 @@ const Main = () => {
           <div className='hr__content' data-aos='fade-right'>
             <h1>Fitness and Nutrition News</h1>
             <p>
-              We provide up to date and reliability the news acticles regarding
-              Fitness and Nutrition for you which was checked by Fitness and
-              Nutrition spcailist.
+              We provide up to date and reliability the news regarding Fitness
+              and Nutrition for you which was checked by Fitness and Nutrition
+              spcailist.
             </p>
           </div>
           <div

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Signup.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -40,7 +41,11 @@ const Signup = () => {
       });
       console.log(response);
       console.log(response.data);
-      alert("Sign up successfully!!");
+      await Swal.fire(
+        "Sign up successful!",
+        "Welcome to HeartRate world!",
+        "success"
+      );
 
       setSignUpData({
         username: "",
