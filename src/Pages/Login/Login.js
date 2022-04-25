@@ -1,17 +1,17 @@
-import React, { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import "./Login.css";
-import { Context } from "../../Context/Context";
-import Swal from "sweetalert2";
+import React, { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import './Login.css';
+import { Context } from '../../Context/Context';
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const { getUser } = useContext(Context);
   const navigate = useNavigate();
 
   const [logInData, setLogInData] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   // get data from inputed from
@@ -24,34 +24,34 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios({
-      method: "POST",
+      method: 'POST',
       data: {
         ...logInData,
       },
       withCredentials: true,
-      url: "http://localhost:4001/users/login",
+      url: 'https://heartrate-backend.vercel.app/users/login',
     })
       .then(async (res) => {
         console.log(res);
 
-        if (res.data === "Successfully Authenticated") {
+        if (res.data === 'Successfully Authenticated') {
           getUser();
-          await Swal.fire("Sign in successful!", "Welcome back!", "success");
+          await Swal.fire('Sign in successful!', 'Welcome back!', 'success');
 
           setLogInData({
-            email: "",
-            password: "",
+            email: '',
+            password: '',
           });
-          navigate("/profile");
+          navigate('/profile');
         } else {
           await Swal.fire({
-            icon: "error",
-            title: "Oops...",
+            icon: 'error',
+            title: 'Oops...',
             text: res.data,
           });
           setLogInData({
-            email: "",
-            password: "",
+            email: '',
+            password: '',
           });
         }
       })
@@ -85,7 +85,7 @@ const Login = () => {
             value={logInData.password}
             onChange={getData}
           />
-          <button type='submit' className={"hr__btn-signin"}>
+          <button type='submit' className={'hr__btn-signin'}>
             Sign In
           </button>
         </form>

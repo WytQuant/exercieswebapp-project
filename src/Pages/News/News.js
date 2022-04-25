@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import "./News.css";
-import Navbar from "../../Components/Navbar/Navbar";
-import axios from "axios";
-import Footer from "../../Components/Footer/Footer";
-import Loading from "../../Components/Loading/Loading";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import React, { useState, useEffect } from 'react';
+import './News.css';
+import Navbar from '../../Components/Navbar/Navbar';
+import axios from 'axios';
+import Footer from '../../Components/Footer/Footer';
+import Loading from '../../Components/Loading/Loading';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const News = () => {
   const [spotArticles, setSpotArticles] = useState([]);
@@ -13,7 +13,7 @@ const News = () => {
 
   AOS.init({
     duration: 1000,
-    easing: "ease",
+    easing: 'ease',
   });
 
   useEffect(() => {
@@ -22,9 +22,11 @@ const News = () => {
 
   const getNews = async () => {
     try {
-      const response = await axios.get("http://localhost:4001/getnews");
+      const response = await axios.get(
+        'https://heartrate-backend.vercel.app/getnews'
+      );
       if (response.status !== 200) {
-        console.log("Please check you url!");
+        console.log('Please check you url!');
       }
       setSpotArticles(response.data.spotlightarticles);
       setArticles(response.data.articles);
@@ -101,7 +103,7 @@ const News = () => {
   return (
     <>
       {!areThereSpotArticles && !areThereArticles ? (
-        <Loading title={"Articles"} />
+        <Loading title={'Articles'} />
       ) : (
         <div className='hr__home'>
           <Navbar />

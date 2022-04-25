@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { client } from "../api/index";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { client } from '../api/index';
 
 const Context = React.createContext();
 
@@ -10,12 +10,13 @@ function ContextProvider({ children }) {
   //------------------------------ Get user data -----------------------------
   const getUser = () => {
     axios({
-      method: "get",
+      method: 'get',
       withCredentials: true,
-      url: "http://localhost:4001/users/me",
+      url: 'https://heartrate-backend.vercel.app/users/me',
     })
       .then((res) => {
-        sessionStorage.setItem("username", res.data.username);
+        console.log(res);
+        sessionStorage.setItem('username', res.data.username);
       })
       .catch((err) => {
         console.log(err);
@@ -28,12 +29,12 @@ function ContextProvider({ children }) {
   const getActivitiesData = async () => {
     try {
       const response = await axios({
-        method: "POST",
+        method: 'POST',
         data: {
-          username: sessionStorage.getItem("username"),
+          username: sessionStorage.getItem('username'),
         },
         withCredentials: true,
-        url: "http://localhost:4001/users/me/records",
+        url: 'https://heartrate-backend.vercel.app/users/me/records',
       });
 
       if (response.status < 300) {
@@ -46,9 +47,9 @@ function ContextProvider({ children }) {
 
   // create activitiesData
   const addData = async (newData) => {
-    await client.post("/users/me/records/create", {
+    await client.post('/users/me/records/create', {
       ...newData,
-      username: sessionStorage.getItem("username"),
+      username: sessionStorage.getItem('username'),
     });
     getActivitiesData();
   };

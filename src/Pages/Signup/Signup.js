@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import "./Signup.css";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import Swal from "sweetalert2";
+import React, { useState } from 'react';
+import './Signup.css';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const Signup = () => {
   const navigate = useNavigate();
 
-  const initialValues = { username: "", email: "", password: "" };
+  const initialValues = { username: '', email: '', password: '' };
   const [signUpData, setSignUpData] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [canSubmit, setCanSubmit] = useState(false);
@@ -18,7 +18,7 @@ const Signup = () => {
     setFormErrors(validate(signUpData));
     setSignUpData({ ...signUpData, [name]: value.trim() });
     const notFillout = Object.values(formErrors).some(
-      (error) => error.split(" ")[2] === "required!"
+      (error) => error.split(' ')[2] === 'required!'
     );
     if (!notFillout) {
       setCanSubmit(true);
@@ -32,28 +32,28 @@ const Signup = () => {
     e.preventDefault();
     try {
       const response = await axios({
-        method: "POST",
+        method: 'POST',
         data: {
           ...signUpData,
         },
         withCredentials: true,
-        url: "http://localhost:4001/users/signup",
+        url: 'https://heartrate-backend.vercel.app/users/signup',
       });
       console.log(response);
       console.log(response.data);
       await Swal.fire(
-        "Sign up successful!",
-        "Welcome to HeartRate world!",
-        "success"
+        'Sign up successful!',
+        'Welcome to HeartRate world!',
+        'success'
       );
 
       setSignUpData({
-        username: "",
-        email: "",
-        password: "",
+        username: '',
+        email: '',
+        password: '',
       });
 
-      navigate("/login");
+      navigate('/login');
     } catch (err) {
       console.log(err);
     }
@@ -66,22 +66,22 @@ const Signup = () => {
     const regexPassword =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/; /* eslint-disable-line */
     if (!values.username) {
-      errors.username = "Username is required!";
+      errors.username = 'Username is required!';
     } else if (values.username.length < 4 && values.username.length > 0) {
-      errors.username = "Username must more than 4 character.";
+      errors.username = 'Username must more than 4 character.';
     }
 
     if (!values.email) {
-      errors.email = "Email is required!";
+      errors.email = 'Email is required!';
     } else if (!regexEmail.test(values.email)) {
-      errors.email = "Email format: example@example.com";
+      errors.email = 'Email format: example@example.com';
     }
 
     if (!values.password) {
-      errors.password = "Password is required!";
+      errors.password = 'Password is required!';
     } else if (!regexPassword.test(values.password)) {
       errors.password =
-        "Minimum eight characters, at least one uppercase letter, one lowercase letter and one number";
+        'Minimum eight characters, at least one uppercase letter, one lowercase letter and one number';
     }
 
     return errors;
@@ -126,7 +126,7 @@ const Signup = () => {
           <button
             disabled={!canSubmit}
             type='submit'
-            className={canSubmit ? "hr__btn-signup" : "cannot-signup"}
+            className={canSubmit ? 'hr__btn-signup' : 'cannot-signup'}
           >
             Sign up
           </button>
