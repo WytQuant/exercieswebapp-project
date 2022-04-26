@@ -19,7 +19,7 @@
   font-size: 3rem;
   text-align: center;
   flex: 1 1 50%;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease-in-out;
 }
 
 .type-icon:hover {

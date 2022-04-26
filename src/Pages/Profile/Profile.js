@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
-import "./Profile.css";
-import Navbar from "../../Components/Navbar/Navbar";
-import ActivitiyCard from "../../Components/ActivityCard/ActivityCard";
-import { Context } from "../../Context/Context";
-import AddActivity from "../../Components/AddActivity/AddActivity";
-import AddButton from "../../Components/AddButton/AddButton";
-import Loading from "../../Components/Loading/Loading";
-import Footer from "../../Components/Footer/Footer";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import React, { useContext, useEffect, useState } from 'react';
+import './Profile.css';
+import Navbar from '../../Components/Navbar/Navbar';
+import ActivitiyCard from '../../Components/ActivityCard/ActivityCard';
+import { Context } from '../../Context/Context';
+import AddActivity from '../../Components/AddActivity/AddActivity';
+import AddButton from '../../Components/AddButton/AddButton';
+import Loading from '../../Components/Loading/Loading';
+import Footer from '../../Components/Footer/Footer';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function Profile() {
   const { activitiesData, getActivitiesData } = useContext(Context);
@@ -16,7 +16,7 @@ function Profile() {
 
   AOS.init({
     duration: 1000,
-    easing: "ease",
+    easing: 'ease',
   });
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function Profile() {
   return (
     <>
       {isFirstSignin && !hasActivitiesData ? (
-        <Loading title={"Activity records"} />
+        <Loading title={'Activity records'} />
       ) : (
         <>
           <Navbar />
@@ -60,7 +60,7 @@ function Profile() {
               </div>
               <div
                 className={
-                  hasActivitiesData ? "hr__card-list" : "hr__cart-list_empty"
+                  hasActivitiesData ? 'hr__card-list' : 'hr__cart-list_empty'
                 }
               >
                 {hasActivitiesData ? (

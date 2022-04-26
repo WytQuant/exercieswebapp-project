@@ -39,8 +39,8 @@ const News = () => {
   const listSpotArticles = spotArticles.slice(0, 3) || [];
   const areThereSpotArticles = spotArticles.length > 0;
 
-  console.log(listSpotArticles);
-  console.log(areThereSpotArticles);
+  // console.log(listSpotArticles);
+  // console.log(areThereSpotArticles);
 
   const spotArticleCards =
     areThereSpotArticles &&

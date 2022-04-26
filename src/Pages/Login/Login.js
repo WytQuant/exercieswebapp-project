@@ -32,23 +32,28 @@ const Login = () => {
       url: 'https://heartrate-backend.vercel.app/users/login',
     })
       .then(async (res) => {
-        console.log(res);
+        // console.log(res);
 
         if (res.data === 'Successfully Authenticated') {
-          getUser();
-          await Swal.fire('Sign in successful!', 'Welcome back!', 'success');
+          await getUser();
+          await Swal.fire({
+            icon: 'success',
+            title: 'Sign in successfully!',
+            text: 'Welcome to HeartRate!',
+          });
 
           setLogInData({
             email: '',
             password: '',
           });
-          navigate('/profile');
+          navigate('/news');
         } else {
           await Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: res.data,
           });
+
           setLogInData({
             email: '',
             password: '',
@@ -58,6 +63,14 @@ const Login = () => {
       .catch((err) => {
         console.log(err);
       });
+    Swal.fire({
+      title: 'Please wait a second, system is authenticating your account...',
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
   };
 
   return (

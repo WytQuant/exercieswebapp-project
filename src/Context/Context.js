@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { client } from '../api/index';
+import Swal from 'sweetalert2';
 
 const Context = React.createContext();
 
 function ContextProvider({ children }) {
   const [activitiesData, setActivitesData] = useState([]);
 
-  //------------------------------ Get user data -----------------------------
+  //------------------------------ Get user data & Logout-----------------------------
   const getUser = () => {
     axios({
       method: 'get',
@@ -15,12 +16,16 @@ function ContextProvider({ children }) {
       url: 'https://heartrate-backend.vercel.app/users/me',
     })
       .then((res) => {
-        console.log(res);
         sessionStorage.setItem('username', res.data.username);
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const logOut = () => {
+    setActivitesData([]);
+    sessionStorage.clear();
   };
 
   //------------------------------ CRUD function for implementation from database -----------------
@@ -38,7 +43,7 @@ function ContextProvider({ children }) {
       });
 
       if (response.status < 300) {
-        setActivitesData(response.data);
+        setActivitesData(response.data.reverse());
       }
     } catch (err) {
       console.log(err);
@@ -51,13 +56,23 @@ function ContextProvider({ children }) {
       ...newData,
       username: sessionStorage.getItem('username'),
     });
-    getActivitiesData();
+    await getActivitiesData();
+    Swal.fire({
+      icon: 'success',
+      title: 'Added!',
+      text: 'Your activity has been added.',
+    });
   };
 
   // remove data function is used on ActivityCard component
   const removeData = async (username, id) => {
     await client.delete(`/users/me/records/${username}/${id}`);
-    getActivitiesData();
+    await getActivitiesData();
+    Swal.fire({
+      icon: 'success',
+      title: 'Deleted!',
+      text: 'Your activity has been deleted.',
+    });
   };
 
   // Updating data
@@ -65,7 +80,12 @@ function ContextProvider({ children }) {
     await client.put(`users/me/records/update`, {
       ...newData,
     });
-    getActivitiesData();
+    await getActivitiesData();
+    Swal.fire({
+      icon: 'success',
+      title: 'Updated!',
+      text: 'Your activity has been updated.',
+    });
   };
 
   // provided value to consummer
@@ -76,6 +96,7 @@ function ContextProvider({ children }) {
     addData,
     getUser,
     updatedData,
+    logOut,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

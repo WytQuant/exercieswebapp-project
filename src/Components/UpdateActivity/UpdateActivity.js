@@ -1,8 +1,8 @@
-import "./UpdateActivity.css";
-import { useState, useContext, useEffect } from "react";
-import DeleteButton from "../DeleteButton/DeleteButton";
-import { Context } from "../../Context/Context";
-import Swal from "sweetalert2";
+import './UpdateActivity.css';
+import { useState, useContext, useEffect } from 'react';
+import DeleteButton from '../DeleteButton/DeleteButton';
+import { Context } from '../../Context/Context';
+import Swal from 'sweetalert2';
 
 const UpdateActivity = ({ isClick, setIsClick, activity }) => {
   const { updatedData } = useContext(Context);
@@ -22,18 +22,19 @@ const UpdateActivity = ({ isClick, setIsClick, activity }) => {
 
   useEffect(() => {
     setFormErrors(validate(updateActivity));
+    const doCompleteFillout = Object.values(updateActivity).every(
+      (value) => value !== ''
+    );
+    if (doCompleteFillout) {
+      setCanSubmit(true);
+    } else {
+      setCanSubmit(false);
+    }
   }, [updateActivity]);
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
     setUpdateActivity({ ...updateActivity, [name]: value });
-    const notFillOut = Object.values(formErrors);
-    console.log(notFillOut);
-    if (notFillOut.length > 0) {
-      setCanSubmit(false);
-    } else {
-      setCanSubmit(true);
-    }
   };
 
   const handleSubmit = (e) => {
@@ -45,44 +46,45 @@ const UpdateActivity = ({ isClick, setIsClick, activity }) => {
       ...updateActivity,
     });
     Swal.fire({
-      position: "center-center",
-      icon: "success",
-      title: "Your activity has been updated",
-      showConfirmButton: false,
-      timer: 1000,
+      title: 'Please wait a second, the activity is being updated...',
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
     });
   };
 
   const validate = (values) => {
     const errors = {};
     if (!values.activityName) {
-      errors.activityName = "Activity name is required!";
+      errors.activityName = 'Activity name is required!';
     } else if (
       values.activityName.trim().length < 5 &&
       values.activityName.length > 0
     ) {
       errors.activityName =
-        "Activity name must contain more thean 4 character.";
+        'Activity name must contain more thean 4 character.';
     }
 
     if (!values.description) {
-      errors.description = "Description is required!";
+      errors.description = 'Description is required!';
     } else if (
       values.description.trim().length < 11 &&
       values.description.length > 0
     ) {
-      errors.description = "Description must contain more than 10 character.";
+      errors.description = 'Description must contain more than 10 character.';
     }
 
     if (!values.type) {
-      errors.type = "Activity type is required!";
+      errors.type = 'Activity type is required!';
     }
 
     if (!values.duration) {
-      errors.duration = "Duration is required!";
+      errors.duration = 'Duration is required!';
     }
     if (!values.date) {
-      errors.date = "Date is required!";
+      errors.date = 'Date is required!';
     }
 
     return errors;
@@ -90,7 +92,7 @@ const UpdateActivity = ({ isClick, setIsClick, activity }) => {
 
   return (
     <>
-      <div className={isClick ? "hr__update-act action" : "hr__update-act"}>
+      <div className={isClick ? 'hr__update-act action' : 'hr__update-act'}>
         <div className='hr__update-input'>
           <h2 className='update-title'>Edit Activity</h2>
           <form className='update-form' onSubmit={handleSubmit}>
@@ -171,7 +173,7 @@ const UpdateActivity = ({ isClick, setIsClick, activity }) => {
               </p>
             </div>
             <button
-              className={canSubmit ? "hr__submit" : "cannot-submit"}
+              className={canSubmit ? 'hr__submit' : 'cannot-submit'}
               disabled={!canSubmit}
             >
               Submit

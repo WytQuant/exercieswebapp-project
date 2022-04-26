@@ -1,13 +1,13 @@
-import React, { useState, useContext } from "react";
-import "./ActivityCard.css";
-import { RiRunFill } from "react-icons/ri";
-import { BiSwim } from "react-icons/bi";
-import { IoBicycle } from "react-icons/io5";
-import { FaHiking } from "react-icons/fa";
-import { Context } from "../../Context/Context";
-import DeleteButton from "../DeleteButton/DeleteButton";
-import UpdateActivity from "../UpdateActivity/UpdateActivity";
-import Swal from "sweetalert2";
+import React, { useState, useContext } from 'react';
+import './ActivityCard.css';
+import { RiRunFill } from 'react-icons/ri';
+import { BiSwim } from 'react-icons/bi';
+import { IoBicycle } from 'react-icons/io5';
+import { FaHiking } from 'react-icons/fa';
+import { Context } from '../../Context/Context';
+import DeleteButton from '../DeleteButton/DeleteButton';
+import UpdateActivity from '../UpdateActivity/UpdateActivity';
+import Swal from 'sweetalert2';
 
 function ActivitiyCard({ activity }) {
   const { removeData } = useContext(Context);
@@ -16,13 +16,13 @@ function ActivitiyCard({ activity }) {
 
   let activityIcon;
 
-  if (activity.type === "Run") {
+  if (activity.type === 'Run') {
     activityIcon = <RiRunFill />;
-  } else if (activity.type === "Swim") {
+  } else if (activity.type === 'Swim') {
     activityIcon = <BiSwim />;
-  } else if (activity.type === "Bicycle ride") {
+  } else if (activity.type === 'Bicycle ride') {
     activityIcon = <IoBicycle />;
-  } else if (activity.type === "Walk and hike") {
+  } else if (activity.type === 'Walk and hike') {
     activityIcon = <FaHiking />;
   }
 
@@ -43,21 +43,24 @@ function ActivitiyCard({ activity }) {
   // Delete activity
   const handleClicktoDelete = () => {
     Swal.fire({
-      title: "Do you really want to delete this activity ?",
+      title: 'Do you really want to delete this activity ?',
       text: "You won't be able to revert this!",
-      icon: "warning",
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#FF0000",
-      cancelButtonColor: "#B7B7B7",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: '#FF0000',
+      cancelButtonColor: '#B7B7B7',
+      confirmButtonText: 'Yes, delete it!',
     }).then(async (result) => {
       if (result.isConfirmed) {
-        await Swal.fire(
-          "Deleted!",
-          "Your activity has been deleted.",
-          "success"
-        );
         removeData(activity.username, activity.id);
+        Swal.fire({
+          title: 'Please wait a second, the activity is being deleted...',
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          didOpen: () => {
+            Swal.showLoading();
+          },
+        });
       }
     });
   };

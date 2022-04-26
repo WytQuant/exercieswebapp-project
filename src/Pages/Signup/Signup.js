@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Signup.css';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -12,51 +12,62 @@ const Signup = () => {
   const [formErrors, setFormErrors] = useState({});
   const [canSubmit, setCanSubmit] = useState(false);
 
+  useEffect(() => {
+    const isValidate = Object.keys(formErrors).length === 0;
+    const doCompleteFillout = Object.values(signUpData).every(
+      (value) => value !== ''
+    );
+    if (doCompleteFillout && isValidate) {
+      setCanSubmit(true);
+    } else {
+      setCanSubmit(false);
+    }
+  }, [signUpData, formErrors]);
+
   // get data from inputed from
   const getData = ({ target }) => {
     const { name, value } = target;
     setFormErrors(validate(signUpData));
     setSignUpData({ ...signUpData, [name]: value.trim() });
-    const notFillout = Object.values(formErrors).some(
-      (error) => error.split(' ')[2] === 'required!'
-    );
-    if (!notFillout) {
-      setCanSubmit(true);
-    } else {
-      setCanSubmit(false);
-    }
   };
 
   // submit form and send our data to backend then storing into database
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const response = await axios({
-        method: 'POST',
-        data: {
-          ...signUpData,
-        },
-        withCredentials: true,
-        url: 'https://heartrate-backend.vercel.app/users/signup',
-      });
-      console.log(response);
-      console.log(response.data);
-      await Swal.fire(
-        'Sign up successful!',
-        'Welcome to HeartRate world!',
-        'success'
-      );
+    axios({
+      method: 'POST',
+      data: {
+        ...signUpData,
+      },
+      withCredentials: true,
+      url: 'https://heartrate-backend.vercel.app/users/signup',
+    })
+      .then(async (res) => {
+        await Swal.fire(
+          'Sign up successful!',
+          'Thank you for your signing up',
+          'success'
+        );
 
-      setSignUpData({
-        username: '',
-        email: '',
-        password: '',
-      });
+        setSignUpData({
+          username: '',
+          email: '',
+          password: '',
+        });
 
-      navigate('/login');
-    } catch (err) {
-      console.log(err);
-    }
+        navigate('/login');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    Swal.fire({
+      title: 'Please wait a second, system is creating your account...',
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
   };
 
   const validate = (values) => {
@@ -81,7 +92,7 @@ const Signup = () => {
       errors.password = 'Password is required!';
     } else if (!regexPassword.test(values.password)) {
       errors.password =
-        'Minimum eight characters, at least one uppercase letter, one lowercase letter and one number';
+        'Minimum 8 characters, at least one uppercase letter, one lowercase letter and one number';
     }
 
     return errors;
