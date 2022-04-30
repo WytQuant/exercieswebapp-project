@@ -107,7 +107,7 @@ const AddActivity = ({ isClick, setIsClick }) => {
   };
 
   return (
-    <div className={isClick ? 'hr__addAct action' : 'hr__addAct'}>
+    <div className={isClick ? 'hr__add-act action' : 'hr__add-act'}>
       <div className='hr__add-input'>
         <h2 className='add-title'>Add Activity</h2>
         <form className='add-act-form' onSubmit={handleSubmit}>
