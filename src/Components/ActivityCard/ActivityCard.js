@@ -50,7 +50,7 @@ function ActivitiyCard({ activity }) {
       confirmButtonColor: '#FF0000',
       cancelButtonColor: '#B7B7B7',
       confirmButtonText: 'Yes, delete it!',
-    }).then(async (result) => {
+    }).then((result) => {
       if (result.isConfirmed) {
         removeData(activity.username, activity.id);
         Swal.fire({
@@ -68,18 +68,18 @@ function ActivitiyCard({ activity }) {
   return (
     <>
       <div
-        className='hr__card-act'
+        className="hr__card-act"
         onMouseOver={handleOver}
         onMouseLeave={handleLeave}
       >
         <span
-          className='type-icon'
+          className="type-icon"
           onClick={handleClicktoUpdate}
-          title='Edit Activity'
+          title="Edit Activity"
         >
           {activityIcon}
         </span>
-        <div className='hr__card-content'>
+        <div className="hr__card-content">
           <p>Name: {activity.activityName}</p>
           <p>Description: {activity.description}</p>
           <p>Activitiy type: {activity.type}</p>
